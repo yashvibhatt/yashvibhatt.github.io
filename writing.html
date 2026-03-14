@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing — Yashvi Bhatt</title>
+  <meta name="description" content="Technical work made readable. Essays about the world. Published writing across cultural, science communication, journalism, and interview formats." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Yashvi Bhatt</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html" class="active">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="page-header">
+      <p class="eyebrow">Writing</p>
+      <h1>Writing</h1>
+      <p>Some of it is technical. Some of it is about trains. Both are honest.</p>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="container">
+
+    <!-- Category 1: Cultural Essays -->
+    <div class="gallery-category">
+      <h3>Cultural Essays</h3>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <span class="gallery-card-type">Feature Essay</span>
+          <h4>Why We Still Romanticize Indian Trains</h4>
+          <span class="source">NMIMS College Magazine &middot; Cultural Edition 2022</span>
+          <p>A personal essay on slowness, connection, and what train travel reveals about modern India.</p>
+          <blockquote class="essay-pullquote">&ldquo;There is something oddly cinematic about Indian train journeys. Maybe it&rsquo;s the way conversations start with &lsquo;Seat exchange karoge?&rsquo; and end with life stories.&rdquo;</blockquote>
+          <p class="essay-context">Published in the NMIMS cultural magazine, this essay explores how long-distance rail journeys have become a site of shared identity, contrasting India&rsquo;s obsession with speed against the stubborn, human slowness of its trains.</p>
+          <button class="essay-toggle" onclick="toggleEssay(this)" data-target="essay-trains">Read full essay &darr;</button>
+          <div class="essay-body" id="essay-trains">
+            <p>There is something oddly cinematic about Indian train journeys.</p>
+            <p>Maybe it&rsquo;s the way conversations start with &ldquo;Seat exchange karoge?&rdquo; and end with life stories. Maybe it&rsquo;s the uncle who insists you try homemade theplas at 6 a.m. Or maybe it&rsquo;s just the fact that nowhere else are you forced into slow living quite like this.</p>
+            <p>For a country obsessed with speed and growth, trains remain stubbornly unhurried. Flights get you there faster. Highways look shinier. But trains? Trains make you feel something.</p>
+            <p>You step onto the train. It&rsquo;s chaos. There are announcements you can hardly hear, porters pushing through the crowds, and chai sellers balancing steel kettles. Once the train starts moving, things calm down. The city starts to fade as a cold wind blows on your face. The noise softens. And suddenly, you&rsquo;re watching fields blur into sunsets you didn&rsquo;t plan to notice.</p>
+            <p>Every coach is its own ecosystem. There&rsquo;s always: the over-prepared family with four suitcases for a two-day trip, the engineering student solving aptitude questions five minutes before a campus placement, the auntie who asks your &ldquo;good name&rdquo; and somehow reaches your career plans within three questions.</p>
+            <p>Strangers share food. People debate politics. Someone is playing music loudly. For some reason, people just deal with it and try to get along. Music is still playing loudly, but there is this understanding that we all have to live together.</p>
+            <p>Indian trains are not comfortable in the luxury sense. They are comfortable in the familiarity sense. They are childhood summer vacations. They are long-distance friendships. They say goodbye with tears on platforms. Arrive in a daze at dawn.</p>
+            <p>In a world chasing speed, train trips show us that it&rsquo;s ok to slow down sometimes. Like sipping tea from a paper cup and sitting by the window &mdash; a seat you really wanted.</p>
+            <p>Maybe that&rsquo;s why we romanticize them. Because somewhere between departure and arrival, we feel a little more human.</p>
+            <p class="essay-citation">Published in the NMIMS College Magazine, Cultural Edition 2022.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 2: Science & Public Health -->
+    <div class="gallery-category">
+      <h3>Science &amp; Public Health Communication</h3>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <span class="gallery-card-type">Science Communication &middot; Public Health Guide &middot; Illinois Audience</span>
+          <h4>How to Interpret Heat Alerts for Public Health Planning</h4>
+          <span class="source">Illinois Local Government &middot; Public Health Department</span>
+          <p>A practical guide translating NWS extreme heat warnings for non-technical public health staff across Illinois.</p>
+          <p class="essay-context">Written for local health department staff without a technical background, this guide walks through a five-step framework for reading heat alerts, identifying vulnerable populations, and coordinating response, demonstrating the ability to write clearly about technical topics for specialist-adjacent audiences.</p>
+          <button class="essay-toggle" onclick="toggleEssay(this)" data-target="essay-heat">Read full guide &darr;</button>
+          <div class="essay-body" id="essay-heat">
+            <p><strong>Purpose:</strong> This guide explains how to interpret extreme heat warnings and use them to support public health planning.</p>
+            <p><strong>1. Identify the type of alert.</strong> Start by noting whether it is a heat advisory, excessive heat watch, or excessive heat warning. Each indicates a different level of intensity and urgency.</p>
+            <p><strong>2. Look at the time period.</strong> Check the start and end dates. Longer events may require sustained public health actions, while shorter alerts may require immediate outreach.</p>
+            <p><strong>3. Understand key heat indicators.</strong> Pay attention to heat index values and expected daytime and nighttime temperatures. High nighttime temperatures are especially important, as they limit the body&rsquo;s ability to recover from daytime heat exposure.</p>
+            <p><strong>4. Consider population vulnerability.</strong> Older adults, outdoor workers, people with chronic health conditions, and households without reliable cooling are generally at greatest risk.</p>
+            <p><strong>5. Calculate potential health impacts.</strong> Extreme heat can increase the likelihood of heat exhaustion, heat stroke, emergency department admissions, and worsening of existing heart or lung conditions.</p>
+            <p><strong>Using alerts for planning:</strong> Depending on the intensity and duration of the alert, public health departments may consider sharing heat safety guidance, coordinating with local agencies to open or extend cooling centers, increasing illness monitoring, and supporting outreach to high-risk groups.</p>
+            <p><strong>Common misinterpretations to avoid:</strong> Treating all heat alerts as equal in intensity; relying only on air temperature without considering the heat index; assuming risk is uniform across all communities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 3: Journalism & Editorial -->
+    <div class="gallery-category">
+      <h3>Journalism &amp; Editorial</h3>
+      <p style="font-size:0.875rem; color:var(--text-muted); margin-bottom:20px; max-width:60ch;">Senior Editor at Mid Day (2021&ndash;2024). Editorial development sample below.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <span class="gallery-card-type">Editorial Development &middot; Newsletter &middot; Lead Editor &middot; Mid Day</span>
+          <h4>Mumbai Awaits Its New Cultural Stage</h4>
+          <span class="source">Mid Day</span>
+          <p>A before-and-after editorial showcase: transforming a junior draft into a published piece on the Nita Mukesh Ambani Cultural Centre.</p>
+          <p class="essay-context">This sample demonstrates the editing process, from a serviceable but flat initial draft to a polished published article with a clear narrative voice, structural clarity, and momentum.</p>
+          <button class="essay-toggle" onclick="toggleEssay(this)" data-target="essay-mumbai">View editorial sample &darr;</button>
+          <div class="essay-body" id="essay-mumbai">
+            <div class="essay-before-after">
+              <div class="essay-draft-col">
+                <h5>Initial junior draft &mdash; Vansh Jain</h5>
+                <p>Mumbai is going to open a new cultural centre called the Nita Mukesh Ambani Cultural Centre in Bandra Kurla Complex. It is expected to be the biggest art and theatre in India. The centre will include different performance halls and art exhibition spaces.</p>
+                <p>The Grand Theatre will have a seating capacity of around 2,000 people and there will also be smaller studio theatres for other types of performances. There is also an Art House which will host exhibitions and installations. The idea is to bring international and Indian art together under one roof.</p>
+                <p>There are going to be many shows lined up for the opening season that include musicals, dance performances and art exhibitions. Many people are excited because this could make Mumbai come on the global cultural map.</p>
+              </div>
+              <div class="essay-draft-col essay-draft-col--published">
+                <h5>Published version &mdash; Yashvi Bhatt, Lead Editor</h5>
+                <p>Mumbai is about to gain more than a new building, more than a large auditorium, it is about to gain a stage ambitious enough to match its cultural appetite.</p>
+                <p>The Nita Mukesh Ambani Cultural Centre, all set to open on the 31st of March, in Bandra Kurla Complex, promises to reshape how the city experiences art. For decades, the heart of Bollywood has created world class talent in theatre, dance, cinema, and design. What has held it back is a space designed to hold that ambition at scale.</p>
+                <p>The numbers alone signal grandeur. A 2,000 seat Grand Theatre built for large format productions, intimate studio venues for experimental work, and a multi level Art House curated to international museum standards.</p>
+                <p>What makes this centre exciting is the programming already taking shape. Broadway-style musicals are expected to share space with Indian classical dance. Immersive art installations will sit alongside culturally rich textile exhibitions rooted in tradition. It is less about competition and more about coexistence.</p>
+                <p>This will not just be another cultural venue. It will become part of Mumbai&rsquo;s rhythm, a place where art is not occasional, but constant.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 4: Interview Series -->
+    <div class="gallery-category">
+      <h3>Interview &amp; Profile Series</h3>
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <span class="gallery-card-type">Interview Series &middot; Instagram Features &middot; UN-Affiliated</span>
+          <h4>Social Conclave: Volunteer Profiles</h4>
+          <span class="source">Social Conclave &middot; UN-affiliated organization</span>
+          <p>Structured interviews with volunteers across the Social Conclave Lead Team, transformed into Instagram caption features for the organization&rsquo;s official account.</p>
+          <p class="essay-context">Crafted to introduce the people behind the event authentically, spotlighting youth leadership in a professional, platform-appropriate format. For privacy and consent reasons, volunteer names shown are as published. Screenshots below show the captions as they appeared.</p>
+          <button class="essay-toggle" onclick="toggleEssay(this)" data-target="essay-conclave">Read full profiles &darr;</button>
+          <div class="essay-body" id="essay-conclave">
+
+            <p class="ig-section-label">Communications Volunteer Feature</p>
+            <div class="ig-post">
+              <p class="ig-post-handle"><span>social_conclave</span> &nbsp;Meet the Team</p>
+              <p><strong>Meher, Communications Volunteer</strong><br>
+              &#127757; Storyteller at Heart &#127757;</p>
+              <p>Every post, reel, and update you see? Meher probably drafted it.</p>
+              <p>As part of the communications team, she ensures that the voices at Social Conclave reach beyond the venue and into communities worldwide.</p>
+              <p>&ldquo;I believe stories move people more than statistics,&rdquo; she says. &ldquo;And this platform lets us amplify youth voices.&rdquo;</p>
+              <p>Currently pursuing media studies, Meher wanted hands-on experience in impact-driven communication, and found it here.</p>
+              <div class="ig-qa">
+                <p><strong>We asked her:</strong></p>
+                <p><strong>What does being part of a UN-powered initiative mean to you?</strong><br>&ldquo;It means responsibility. Words matter.&rdquo;</p>
+                <p><strong>What&rsquo;s one skill you&rsquo;ve gained?</strong><br>&ldquo;Learning to communicate urgency without losing empathy.&rdquo;</p>
+              </div>
+              <p>Swipe to see her favorite moment from prep week &rarr;</p>
+              <p class="ig-hashtags">#MeetTheTeam #SocialConclave #YouthVoices</p>
+              <p class="ig-date">1 January 2022</p>
+            </div>
+
+            <p class="ig-section-label">Logistics Lead Spotlight</p>
+            <div class="ig-post">
+              <p class="ig-post-handle"><span>social_conclave</span> &nbsp;Meet the Team</p>
+              <p><strong>Aarav, Logistics Lead</strong><br>
+              &#10024; The Calm Behind the Chaos &#10024;</p>
+              <p>If something runs smoothly at Social Conclave, chances are Aarav had something to do with it.</p>
+              <p>As part of our logistics team, he&rsquo;s the one coordinating schedules, handling last-minute changes, and somehow staying calm through it all.</p>
+              <p>&ldquo;When you&rsquo;re working on something powered by the UN, the pressure is real,&rdquo; he laughs. &ldquo;But so is the purpose.&rdquo;</p>
+              <p>A second-year management student, Aarav joined as a volunteer last year. This year, he stepped up to lead operations.</p>
+              <div class="ig-qa">
+                <p><strong>We asked him:</strong></p>
+                <p><strong>Why Social Conclave?</strong><br>&ldquo;Because I wanted to work on something bigger than myself.&rdquo;</p>
+                <p><strong>One word to describe the team?</strong><br>&ldquo;Driven.&rdquo;</p>
+                <p><strong>What excites you most about the event?</strong><br>&ldquo;Seeing months of planning turn into real conversations.&rdquo;</p>
+              </div>
+              <p>Drop a &#128153; for Aarav and the team making it all happen behind the scenes!</p>
+              <p class="ig-hashtags">#SocialConclave #UNYEF #MeetTheTeam #YouthLeadership</p>
+              <p class="ig-date">1 January 2022</p>
+            </div>
+
+            <p class="ig-section-label">Delegate Support Volunteer Spotlight</p>
+            <div class="ig-post">
+              <p class="ig-post-handle"><span>social_conclave</span> &nbsp;Meet the Team</p>
+              <p><strong>Zain &ndash; Delegate Support Volunteer</strong><br>
+              &#129309; Meet Zain &ndash; The People Person &#129309;</p>
+              <p>From welcoming speakers to helping delegates navigate sessions, Zain is one of the first friendly faces you&rsquo;ll meet at Social Conclave.</p>
+              <p>&ldquo;I signed up because I wanted to meet changemakers,&rdquo; he says. &ldquo;I didn&rsquo;t expect to become friends with them.&rdquo;</p>
+              <p>A political science student passionate about diplomacy, Zain believes youth platforms like this create real policy impact.</p>
+              <div class="ig-qa">
+                <p><strong>We asked:</strong></p>
+                <p><strong>Why volunteer instead of just attending?</strong><br>&ldquo;Impact feels different when you help build it.&rdquo;</p>
+                <p><strong>What&rsquo;s the best part of the team dynamic?</strong><br>&ldquo;Everyone&rsquo;s serious about change, but we still laugh through the chaos.&rdquo;</p>
+              </div>
+              <p>Say hi to Zain in the comments &#128075;</p>
+              <p class="ig-hashtags">#SocialConclave #MeetTheTeam #YouthLeadership #Delegates</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer note -->
+    <div class="pull-quote" style="margin-bottom: 80px;">
+      <p>Writing is not separate from technical work. The same thinking that goes into a clean data schema goes into a clean paragraph. Both are about removing what&rsquo;s unnecessary.</p>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Yashvi Bhatt</div>
+        <p class="footer-tagline">Built carefully. Updated regularly. No Lorem Ipsum was harmed.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/documents/resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

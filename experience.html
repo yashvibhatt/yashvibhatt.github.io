@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Experience — Yashvi Bhatt</title>
+  <meta name="description" content="Data engineering, QA automation, financial BI, and editorial leadership — across five companies in India and the US." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Stats row ── */
+    .exp-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    @media (max-width: 640px) { .exp-stats { grid-template-columns: repeat(2, 1fr); } }
+    .exp-stat-cell {
+      background: var(--bg-2);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .exp-stat-num {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .exp-stat-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── Type badge ── */
+    .exp-type-badge {
+      display: inline-block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+    .exp-type-badge.intern   { color: #8BB8D0; background: rgba(139,184,208,0.12); }
+    .exp-type-badge.fulltime { color: var(--accent); background: var(--accent-dim); }
+    .exp-type-badge.research { color: #7A9E7E; background: rgba(122,158,126,0.12); }
+    .exp-type-badge.ta       { color: #C4A97A; background: rgba(196,169,122,0.12); }
+
+    /* ── Location ── */
+    .exp-location {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+      margin-top: 5px;
+      display: block;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Bold metrics inside bullets ── */
+    .exp-bullets li strong { color: var(--text); font-weight: 600; }
+
+    /* ── Key result callout ── */
+    .exp-result {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: var(--accent-dim);
+      border-radius: var(--radius);
+      border-left: 2px solid var(--accent);
+    }
+    .exp-result-num {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .exp-result-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Yashvi Bhatt</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html" class="active">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="page-header">
+      <p class="eyebrow">Experience</p>
+      <h1>Where I&rsquo;ve worked.</h1>
+      <p>Data engineering, QA automation, financial BI, editorial leadership, and campus roles &mdash; across five companies and four industries.</p>
+    </div>
+  </div>
+
+  <!-- STATS ROW -->
+  <div class="container">
+    <div class="exp-stats fade-in-section">
+      <div class="exp-stat-cell">
+        <span class="exp-stat-num"><span class="count-num" data-target="8">0</span>+</span>
+        <span class="exp-stat-label">Roles across<br>2 countries</span>
+      </div>
+      <div class="exp-stat-cell">
+        <span class="exp-stat-num"><span class="count-num" data-target="50">0</span>%</span>
+        <span class="exp-stat-label">Testing effort<br>reduced at ARCON</span>
+      </div>
+      <div class="exp-stat-cell">
+        <span class="exp-stat-num"><span class="count-num" data-target="6">0</span>+</span>
+        <span class="exp-stat-label">Power BI dashboards<br>built at Sapient</span>
+      </div>
+      <div class="exp-stat-cell">
+        <span class="exp-stat-num"><span class="count-num" data-target="3">0</span>+</span>
+        <span class="exp-stat-label">Years in editorial<br>leadership</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDUSTRY & TECH -->
+  <section class="exp-section" style="padding-top: 0; border-top: none;">
+    <div class="container">
+
+      <div class="section-header">
+        <p class="eyebrow">Industry</p>
+        <h2>Technical &amp; Professional</h2>
+      </div>
+
+      <p class="exp-subsection-label">Internships &amp; Industry &middot; India</p>
+      <div class="exp-timeline fade-in-section">
+
+        <!-- Sapient Wealth Advisors -->
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Web Developer and Power BI Intern <span class="exp-type-badge intern">Intern</span></p>
+            <p class="exp-org">Sapient Wealth Advisors Ltd</p>
+            <p class="exp-dates">May 2022 &ndash; Nov 2022</p>
+            <span class="exp-location">Mumbai, India</span>
+          </div>
+          <div>
+            <ul class="exp-bullets">
+              <li>Developed <strong>6+ interactive Power BI dashboards</strong> integrating real-time financial and behavioral client data used for internal analytics and decision-making</li>
+              <li>Optimized SQL queries and database indexing strategies, improving data retrieval performance by <strong>28%</strong> and reducing dashboard refresh times</li>
+              <li>Built <strong>API-driven data ingestion pipelines</strong> automating recurring financial data updates, reducing manual reporting effort by <strong>35%</strong></li>
+              <li>Designed data models and transformations supporting scalable reporting for portfolio analysis and financial insights</li>
+              <li>Collaborated with analysts and engineers to translate financial datasets into actionable visual dashboards</li>
+            </ul>
+            <div class="exp-result">
+              <span class="exp-result-num">35%</span>
+              <span class="exp-result-desc">reduction in manual reporting effort through automated API ingestion pipelines &mdash; freeing analysts for higher-value work</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SBI Mutual Fund -->
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Web Development Intern <span class="exp-type-badge intern">Intern</span></p>
+            <p class="exp-org">SBI Mutual Fund</p>
+            <p class="exp-dates">Aug 2021 &ndash; Sep 2021</p>
+            <span class="exp-location">Mumbai, India</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Contributed to development and structured updates of <strong>web-based financial product pages</strong> for a large asset management platform</li>
+            <li>Improved layout hierarchy and information architecture to make investment product information easier to understand for end users</li>
+            <li>Ensured consistency across multiple web pages by aligning content structure with internal formatting standards and brand guidelines</li>
+            <li>Assisted the web team in preparing product pages for publication and ensuring high accuracy of publicly facing financial content</li>
+          </ul>
+        </div>
+
+        <!-- ARCON -->
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Quality Assurance Intern <span class="exp-type-badge intern">Intern</span></p>
+            <p class="exp-org">ARCON</p>
+            <p class="exp-dates">Jan 2021 &ndash; May 2021</p>
+            <span class="exp-location">Mumbai, India</span>
+          </div>
+          <div>
+            <ul class="exp-bullets">
+              <li>Automated end-to-end validation workflows using <strong>Python and Selenium</strong>, reducing manual testing effort by <strong>50%</strong></li>
+              <li>Built <strong>100+ automated validation scripts</strong> within a scalable testing framework to detect data inconsistencies and edge-case anomalies</li>
+              <li>Strengthened system integrity and reproducibility by identifying <strong>data pipeline defects</strong> before production deployment</li>
+              <li>Improved software reliability by implementing repeatable test automation across critical validation scenarios</li>
+            </ul>
+            <div class="exp-result">
+              <span class="exp-result-num">50%</span>
+              <span class="exp-result-desc">reduction in manual testing effort &mdash; 100+ automated scripts built from scratch using Python &amp; Selenium</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- GALA Optics -->
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Web and Database Intern <span class="exp-type-badge intern">Intern</span></p>
+            <p class="exp-org">GALA Optics Limited</p>
+            <p class="exp-dates">Dec 2019 &ndash; Nov 2020</p>
+            <span class="exp-location">Mumbai, India</span>
+          </div>
+          <div>
+            <ul class="exp-bullets">
+              <li>Designed and launched a <strong>full-stack e-commerce platform</strong> with structured navigation, responsive UI, and backend database architecture supporting product catalog and transactions</li>
+              <li>Built responsive <strong>HTML/CSS interfaces</strong> and optimized UX flows, improving page navigation efficiency and reducing bounce rate during internal testing</li>
+              <li>Engineered SQL-based backend logic and query optimization improving data retrieval performance by <strong>30%+</strong> across product and order queries</li>
+              <li>Integrated secure <strong>API-based transaction processing</strong> enabling scalable checkout and high-volume usage</li>
+              <li>Collaborated with stakeholders to refine product hierarchy and customer journeys, improving usability and platform reliability</li>
+            </ul>
+            <div class="exp-result">
+              <span class="exp-result-num">30%</span>
+              <span class="exp-result-desc">SQL and backend performance improvement on a live e-commerce platform &mdash; first production system shipped end-to-end</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="exp-divider">
+        <span class="exp-divider-label">Research &amp; Teaching</span>
+      </div>
+
+      <p class="exp-subsection-label">University of Illinois &middot; 2025&ndash;Present</p>
+      <div class="exp-timeline fade-in-section">
+
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Graduate Research Assistant <span class="exp-type-badge research">Research</span></p>
+            <p class="exp-org">Health Informatics Center &middot; University of Illinois</p>
+            <p class="exp-dates">Aug 2025 &ndash; Present</p>
+            <span class="exp-location">Champaign, IL</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Support research documentation and structured summaries for interdisciplinary stakeholders</li>
+            <li>Translate technical research material into accessible written deliverables</li>
+            <li>Assist in organizing and presenting research outputs across project milestones</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Graduate Teaching Assistant <span class="exp-type-badge ta">TA</span></p>
+            <p class="exp-org">FIN 221 Corporate Finance &middot; University of Illinois</p>
+            <p class="exp-dates">Aug 2025 &ndash; Dec 2025</p>
+            <span class="exp-location">Champaign, IL</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Evaluated quantitative assignments and provided structured written feedback across large submission volumes</li>
+            <li>Helped clarify complex financial concepts and reinforce course material for students</li>
+            <li>Maintained consistent grading standards in alignment with course objectives</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Digital Accessibility Assistant <span class="exp-type-badge research">Research</span></p>
+            <p class="exp-org">Digital Risk Office &middot; University of Illinois</p>
+            <p class="exp-dates">Oct 2025 &ndash; Jan 2026</p>
+            <span class="exp-location">Champaign, IL</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Remediated institutional documents using <strong>Equidox and Adobe Acrobat Pro</strong></li>
+            <li>Implemented proper heading hierarchy, tagging structure, and reading order across institutional PDFs</li>
+            <li>Ensured documents met WCAG digital accessibility standards for the university</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="exp-divider">
+        <span class="exp-divider-label">Editorial &amp; Media</span>
+      </div>
+
+      <p class="exp-subsection-label">Journalism &amp; Writing &middot; 3 Years</p>
+      <div class="exp-timeline fade-in-section">
+
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Senior Editor <span class="exp-type-badge fulltime">Full-time</span></p>
+            <p class="exp-org">Mid Day &ndash; Local News Publication</p>
+            <p class="exp-dates">Apr 2021 &ndash; Aug 2024</p>
+            <span class="exp-location">Mumbai, India</span>
+          </div>
+          <div>
+            <ul class="exp-bullets">
+              <li>Edited and structured published articles for <strong>clarity, hierarchy, tone</strong>, and publication readiness across multiple editorial sections</li>
+              <li>Enforced strict editorial standards and style guidelines to maintain consistency across all published content</li>
+              <li>Reviewed and approved articles prior to publication to ensure structural quality, factual consistency, and deadline adherence</li>
+              <li>Managed <strong>high-volume editorial workflows</strong> while maintaining strong publication quality across daily news cycles</li>
+            </ul>
+            <div class="exp-result">
+              <span class="exp-result-num">3+</span>
+              <span class="exp-result-desc">years shaping editorial output at a major Mumbai daily — bridging technical accuracy and public-facing communication at scale</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="exp-divider">
+        <span class="exp-divider-label">Campus</span>
+      </div>
+
+      <p class="exp-subsection-label">Campus &middot; University of Illinois</p>
+      <div class="exp-timeline fade-in-section">
+
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Barista</p>
+            <p class="exp-org">University Dining Services &middot; UIUC</p>
+            <p class="exp-dates">Fall 2024</p>
+            <span class="exp-location">Champaign, IL</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Worked in a fast-paced campus café environment serving students and staff</li>
+            <li>Managed orders and customer interactions during peak hours</li>
+            <li>Maintained organization and cleanliness of the service area</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-meta">
+            <p class="exp-role">Camp Counselor</p>
+            <p class="exp-org">Active Illini Day Camp &middot; UIUC</p>
+            <p class="exp-dates">Spring 2025</p>
+            <span class="exp-location">Champaign, IL</span>
+          </div>
+          <ul class="exp-bullets">
+            <li>Supervised and engaged children in structured recreational activities</li>
+            <li>Ensured safety and positive participation in group activities</li>
+            <li>Supported daily camp operations and coordination</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section style="background: var(--bg-2); border-top: 1px solid var(--border); padding: 64px 0; margin-top: 80px;">
+    <div class="container" style="text-align:center;">
+      <p class="eyebrow" style="margin-bottom:12px;">What&rsquo;s next</p>
+      <h2 style="margin-bottom:16px;">See the projects behind the work.</h2>
+      <p style="margin: 0 auto 32px; max-width: 50ch;">The experience above shows where I&rsquo;ve been. The projects show what I actually built.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="work.html" class="btn btn-primary">View Projects</a>
+        <a href="contact.html" class="btn btn-ghost">Get In Touch &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Yashvi Bhatt</div>
+        <p class="footer-tagline">Built carefully. Updated regularly. No Lorem Ipsum was harmed.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/documents/resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

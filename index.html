@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yashvi Bhatt — Data Engineer & Analyst</title>
+  <meta name="description" content="MS Information Management, UIUC. I build data pipelines, BI dashboards, automated systems, and technical communication for teams that need things to actually work." />
+  <meta property="og:title" content="Yashvi Bhatt — Data Engineer & Analyst" />
+  <meta property="og:description" content="Data systems and clear sentences. Both, on purpose." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ─── Career Timeline (Homepage) ─── */
+    #timeline { padding: 80px 0 60px; border-top: 1px solid var(--border); }
+
+    .tl-home-filters { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+    .tl-home-filter {
+      background:none; border:1px solid var(--border); color:var(--text-muted);
+      font-size:0.65rem; padding:5px 16px; border-radius:4px; cursor:pointer;
+      font-family:inherit; letter-spacing:0.08em; text-transform:uppercase; transition:all 0.15s;
+    }
+    .tl-home-filter:hover, .tl-home-filter.active { border-color:var(--accent); color:var(--accent); background:var(--accent-dim); }
+
+    .tl-home-legend { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:24px; }
+    .tl-home-legend-item { display:flex; align-items:center; gap:6px; font-size:0.62rem; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); }
+    .tl-home-legend-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+    .tl-home-hint {
+      font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase;
+      color:var(--text-muted); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+    }
+    .tl-home-hint-arrow {
+      display:inline-flex; align-items:center; justify-content:center;
+      width:28px; height:18px; border:1px solid var(--border); border-radius:3px;
+      font-size:0.8rem; color:var(--accent);
+      animation:tl-nudge 1.6s ease-in-out infinite;
+    }
+    @keyframes tl-nudge { 0%,100%{transform:translateX(0)} 50%{transform:translateX(5px)} }
+    @media (max-width:768px) { .tl-home-hint { display:none; } }
+
+    /* Horizontal track */
+    #tl-home-wrap {
+      display:flex; flex-direction:row; align-items:flex-start;
+      overflow-x:auto; overflow-y:visible; position:relative;
+      padding-bottom:48px;
+      scrollbar-width:thin; scrollbar-color:var(--border) transparent;
+    }
+    #tl-home-wrap::-webkit-scrollbar { height:4px; }
+    #tl-home-wrap::-webkit-scrollbar-thumb { background:var(--border); border-radius:2px; }
+
+    /* Track line — width set by JS to exactly match scroll content */
+    .tl-home-track-line {
+      position:absolute; top:20px; left:0;
+      height:1px; background:var(--border); z-index:0; pointer-events:none;
+    }
+
+    /* Scroll outer wrapper — clips overflow and hosts fade indicator */
+    .tl-home-scroll-outer { position:relative; }
+    .tl-home-scroll-outer::after {
+      content:'';
+      position:absolute; top:0; right:0; bottom:0; width:80px;
+      background:linear-gradient(to left, var(--bg) 0%, transparent 100%);
+      pointer-events:none; z-index:10;
+    }
+    @media (max-width:768px) { .tl-home-scroll-outer::after { display:none; } }
+
+    /* Year column */
+    .tl-home-year { display:flex; flex-direction:column; min-width:260px; max-width:290px; flex-shrink:0; padding-right:16px; }
+    .tl-home-year-head { display:flex; flex-direction:column; align-items:flex-start; margin-bottom:14px; }
+    /* Dot: margin-top:15px → center at 15+5=20px → aligns with track line */
+    .tl-home-year-head::before {
+      content:''; display:block; width:10px; height:10px; border-radius:50%;
+      background:var(--accent); margin-top:15px; margin-bottom:8px;
+      position:relative; z-index:1; box-shadow:0 0 0 3px var(--bg);
+    }
+    .tl-home-year-num { font-size:0.72rem; font-weight:700; letter-spacing:0.1em; color:var(--accent); text-transform:uppercase; }
+    .tl-home-year-entries { display:flex; flex-direction:column; gap:6px; }
+
+    /* Card */
+    .tl-home-entry { position:relative; }
+    .tl-home-card {
+      background:var(--bg-2); border:1px solid var(--border); border-radius:6px;
+      padding:11px 13px; cursor:default; overflow:hidden;
+      transition:border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+    .tl-home-card-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; }
+    .tl-home-card-left { flex:1; min-width:0; }
+    .tl-home-card-title { font-size:0.82rem; font-weight:600; color:var(--text); margin:0; line-height:1.3; }
+    .tl-home-card-org { font-size:0.67rem; color:var(--text-muted); margin:3px 0 0; line-height:1.4; }
+    .tl-home-card-right { display:flex; flex-direction:column; align-items:flex-end; gap:3px; flex-shrink:0; }
+    .tl-home-card-dates { font-size:0.58rem; color:var(--text-muted); letter-spacing:0.04em; white-space:nowrap; }
+    .tl-home-badge { font-size:0.52rem; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; padding:2px 6px; border-radius:3px; white-space:nowrap; }
+
+    /* Type border + badge colors */
+    .tl-home-entry[data-type="work"]     .tl-home-card { border-left:2px solid var(--accent); }
+    .tl-home-entry[data-type="research"] .tl-home-card { border-left:2px solid #7A9E7E; }
+    .tl-home-entry[data-type="campus"]   .tl-home-card { border-left:2px solid #8BB8D0; }
+    .tl-home-entry[data-type="project"]  .tl-home-card { border-left:2px solid #9B7EDA; }
+    .tl-home-entry[data-type="edu"]      .tl-home-card { border-left:2px solid #C4A97A; }
+
+    .tl-home-badge.work     { color:var(--accent); background:var(--accent-dim); }
+    .tl-home-badge.research { color:#7A9E7E;       background:rgba(122,158,126,0.12); }
+    .tl-home-badge.campus   { color:#8BB8D0;       background:rgba(139,184,208,0.12); }
+    .tl-home-badge.project  { color:#9B7EDA;       background:rgba(155,126,218,0.12); }
+    .tl-home-badge.edu      { color:#C4A97A;       background:rgba(196,169,122,0.12); }
+
+    /* Expand body — hidden by default */
+    .tl-home-body { max-height:0; overflow:hidden; opacity:0; transition:max-height 0.32s ease, opacity 0.22s ease; }
+    .tl-home-body-inner { margin-top:8px; padding-top:8px; border-top:1px solid var(--border); }
+    .tl-home-body-inner ul { list-style:none; padding:0; margin:0; }
+    .tl-home-body-inner li { font-size:0.73rem; color:var(--text-muted); line-height:1.55; padding-left:12px; position:relative; margin-bottom:3px; }
+    .tl-home-body-inner li::before { content:'—'; position:absolute; left:0; color:var(--accent); font-size:0.62rem; line-height:2; }
+
+    /* Hover expand — desktop */
+    @media (hover: hover) {
+      .tl-home-entry:hover .tl-home-card { border-color:var(--accent); background:var(--bg-3); box-shadow:0 4px 24px rgba(126,184,247,0.07); }
+      .tl-home-entry:hover .tl-home-body { max-height:340px; opacity:1; }
+    }
+    /* Click expand — touch / mobile */
+    .tl-home-entry.tl-open .tl-home-card { border-color:var(--accent); background:var(--bg-3); }
+    .tl-home-entry.tl-open .tl-home-body { max-height:340px; opacity:1; }
+
+    /* Filter hidden state */
+    .tl-home-entry.tl-hidden { display:none; }
+    .tl-home-year.tl-all-hidden { display:none; }
+
+    /* Mobile: vertical layout */
+    @media (max-width:768px) {
+      #tl-home-wrap { display:block; overflow-x:visible; }
+      #tl-home-wrap::before { display:none; }
+      .tl-home-year { display:flex; flex-direction:row; max-width:none; min-width:auto; padding-right:0; margin-bottom:4px; }
+      .tl-home-year-head { width:54px; flex-shrink:0; padding-top:11px; align-items:flex-end; margin-bottom:0; }
+      .tl-home-year-head::before { display:none; }
+      .tl-home-year-num { writing-mode:horizontal-tb; }
+      .tl-home-year-entries { flex:1; border-left:1px solid var(--border); padding-left:18px; padding-bottom:20px; margin-left:12px; gap:8px; }
+      .tl-home-card-right { display:none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Yashvi Bhatt</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <canvas class="hero-chart" id="heroChart"></canvas>
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="eyebrow hero-eyebrow">Data Engineer &middot; Analyst &middot; MS UIUC &middot; <span class="avail-badge"><span class="avail-dot"></span>Available mid-2026</span> <span class="cfa-countdown" id="cfaCountdown"></span> <span class="hero-clock" id="heroClock"></span></p>
+          <h1>I turn messy data into<br><span>clear decisions.</span></h1>
+          <p class="hero-sub mt-4">
+            I build data pipelines, BI dashboards, and automated systems.
+            I also write and make technical work legible for the people who need to act on it.
+          </p>
+          <div class="btn-group">
+            <a href="work.html" class="btn btn-primary">See My Projects</a>
+            <a href="services.html" class="btn btn-ghost">What I Can Do For You</a>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-headshot">
+            <img src="assets/images/Headshot.jpeg" alt="Yashvi Bhatt" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET TICKER -->
+  <div class="market-ticker">
+    <span class="ticker-header">MKTS</span>
+    <div class="ticker-scroll-wrap">
+      <div class="market-ticker-inner">
+        <!-- Set 1 -->
+        <div class="ticker-item" data-ticker="spx"><span class="ticker-sym">S&amp;P 500</span><span class="ticker-price">5,842.3</span><span class="ticker-change up">+12.40 (+0.21%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="ndx"><span class="ticker-sym">NASDAQ</span><span class="ticker-price">18,563.7</span><span class="ticker-change dn">&minus;23.10 (&minus;0.12%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="dji"><span class="ticker-sym">DOW</span><span class="ticker-price">43,218.5</span><span class="ticker-change up">+89.30 (+0.21%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="vix"><span class="ticker-sym">VIX</span><span class="ticker-price">18.42</span><span class="ticker-change dn">&minus;0.31 (&minus;1.65%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="tsy"><span class="ticker-sym">10Y</span><span class="ticker-price">4.523%</span><span class="ticker-change up">+0.014</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="btc"><span class="ticker-sym">BTC</span><span class="ticker-price">84,320</span><span class="ticker-change up">+1240.00 (+1.49%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="gold"><span class="ticker-sym">GOLD</span><span class="ticker-price">2,931.4</span><span class="ticker-change dn">&minus;8.20 (&minus;0.28%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="eurusd"><span class="ticker-sym">EUR/USD</span><span class="ticker-price">1.0842</span><span class="ticker-change up">+0.0023 (+0.21%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="oil"><span class="ticker-sym">WTI</span><span class="ticker-price">68.74</span><span class="ticker-change dn">&minus;0.43 (&minus;0.62%)</span></div>
+        <div class="ticker-divider"></div>
+        <!-- Set 2 — duplicate for seamless loop -->
+        <div class="ticker-item" data-ticker="spx"><span class="ticker-sym">S&amp;P 500</span><span class="ticker-price">5,842.3</span><span class="ticker-change up">+12.40 (+0.21%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="ndx"><span class="ticker-sym">NASDAQ</span><span class="ticker-price">18,563.7</span><span class="ticker-change dn">&minus;23.10 (&minus;0.12%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="dji"><span class="ticker-sym">DOW</span><span class="ticker-price">43,218.5</span><span class="ticker-change up">+89.30 (+0.21%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="vix"><span class="ticker-sym">VIX</span><span class="ticker-price">18.42</span><span class="ticker-change dn">&minus;0.31 (&minus;1.65%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="tsy"><span class="ticker-sym">10Y</span><span class="ticker-price">4.523%</span><span class="ticker-change up">+0.014</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="btc"><span class="ticker-sym">BTC</span><span class="ticker-price">84,320</span><span class="ticker-change up">+1240.00 (+1.49%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="gold"><span class="ticker-sym">GOLD</span><span class="ticker-price">2,931.4</span><span class="ticker-change dn">&minus;8.20 (&minus;0.28%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="eurusd"><span class="ticker-sym">EUR/USD</span><span class="ticker-price">1.0842</span><span class="ticker-change up">+0.0023 (+0.21%)</span></div>
+        <div class="ticker-divider"></div>
+        <div class="ticker-item" data-ticker="oil"><span class="ticker-sym">WTI</span><span class="ticker-price">68.74</span><span class="ticker-change dn">&minus;0.43 (&minus;0.62%)</span></div>
+        <div class="ticker-divider"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CRED BAR -->
+  <div class="cred-bar">
+    <div class="cred-bar-inner">
+      <span class="cred-item"><strong>MS Information Management</strong> &middot; UIUC</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>CFA L1</strong> &middot; L2 Candidate May 2026</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>AWS Certified</strong> Cloud Practitioner</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>B.Tech</strong> Computer Engineering</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>Senior Editor</strong> &middot; Mid Day</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>4 Years</strong> Industry Experience</span>
+      <span class="cred-dot"></span>
+      <!-- Duplicate for seamless loop -->
+      <span class="cred-item"><strong>MS Information Management</strong> &middot; UIUC</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>CFA L1</strong> &middot; L2 Candidate May 2026</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>AWS Certified</strong> Cloud Practitioner</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>B.Tech</strong> Computer Engineering</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>Senior Editor</strong> &middot; Mid Day</span>
+      <span class="cred-dot"></span>
+      <span class="cred-item"><strong>4 Years</strong> Industry Experience</span>
+      <span class="cred-dot"></span>
+    </div>
+  </div>
+
+  <!-- CAREER TIMELINE -->
+  <section id="timeline">
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Career Journey</p>
+        <h2>Every role, project, and milestone.</h2>
+      </div>
+
+      <div class="tl-home-filters">
+        <button class="tl-home-filter active" data-filter="all">All</button>
+        <button class="tl-home-filter" data-filter="work">Work</button>
+        <button class="tl-home-filter" data-filter="research">Research &amp; Teaching</button>
+        <button class="tl-home-filter" data-filter="project">Projects</button>
+        <button class="tl-home-filter" data-filter="edu">Education</button>
+        <button class="tl-home-filter" data-filter="campus">Campus</button>
+      </div>
+
+      <div class="tl-home-legend">
+        <span class="tl-home-legend-item"><span class="tl-home-legend-dot" style="background:var(--accent);"></span>Work</span>
+        <span class="tl-home-legend-item"><span class="tl-home-legend-dot" style="background:#7A9E7E;"></span>Research &amp; Teaching</span>
+        <span class="tl-home-legend-item"><span class="tl-home-legend-dot" style="background:#9B7EDA;"></span>Projects</span>
+        <span class="tl-home-legend-item"><span class="tl-home-legend-dot" style="background:#C4A97A;"></span>Education</span>
+        <span class="tl-home-legend-item"><span class="tl-home-legend-dot" style="background:#8BB8D0;"></span>Campus</span>
+      </div>
+
+      <span class="tl-home-hint">Hover to expand &middot; Scroll to explore <span class="tl-home-hint-arrow">&rarr;</span></span>
+      <div class="tl-home-scroll-outer">
+        <div id="tl-home-wrap"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I DO -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">What I Do</p>
+        <h2>Technical work, end to end.</h2>
+      </div>
+      <div class="three-col">
+        <div class="col-card">
+          <div class="col-icon">&#9638;</div>
+          <h3>Data &amp; Analytics</h3>
+          <p>I build pipelines that move data reliably. I clean it, model it, and surface it in dashboards that answer real questions, not dashboards that look good in a screenshot.</p>
+        </div>
+        <div class="col-card">
+          <div class="col-icon">&#9654;</div>
+          <h3>Engineering &amp; Automation</h3>
+          <p>I automate the tedious parts: test scripts, document processing, data workflows. Manual work goes down. Accuracy goes up. Teams get to work on things that matter.</p>
+        </div>
+        <div class="col-card">
+          <div class="col-icon">&#9998;</div>
+          <h3>Writing &amp; Communication</h3>
+          <p>I write technical guides, documentation, and content that non-specialist audiences can use. Both skills come from the same habit: find what&rsquo;s unclear, then fix it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SELECTED WORK -->
+  <section>
+    <div class="container">
+      <div class="section-header">
+        <p class="eyebrow">Selected Work</p>
+        <h2>Three projects. The numbers are real.</h2>
+      </div>
+      <div class="work-grid">
+        <a href="work.html#e-concessionaire" class="work-card">
+          <span class="work-card-tag">Data Engineering &middot; Automation</span>
+          <h3>Paper forms in. Structured data out.</h3>
+          <span class="work-stat"><span class="count-num" data-target="87" data-suffix="%">0</span>%</span>
+          <p>Faster. Railway concession processing: 15 days &rarr; 2 days. Built an OCR pipeline that replaced a fully manual system.</p>
+          <span class="work-card-arrow">E-Concessionaire OCR System <span>&rarr;</span></span>
+        </a>
+        <a href="work.html#financial-pipeline" class="work-card">
+          <span class="work-card-tag">Data Engineering &middot; ETL &middot; Python</span>
+          <h3>Two messy sources. One clean pipeline.</h3>
+          <span class="work-stat"><span class="count-num" data-target="8" data-suffix="">0</span> DQ</span>
+          <p>Checks per run. Multi-source ETL with 12-step cleaning, full audit trail, and direct BI connectivity.</p>
+          <span class="work-card-arrow">Automated Financial Data Pipeline <span>&rarr;</span></span>
+        </a>
+        <a href="work.html#credit-rating-ml" class="work-card">
+          <span class="work-card-tag">Machine Learning &middot; Python &middot; scikit-learn</span>
+          <h3>Can financial ratios predict credit risk?</h3>
+          <span class="work-stat"><span class="count-num" data-target="78" data-suffix="%">0</span>%</span>
+          <p>Binary classification accuracy. Investment-grade vs. speculative-grade across 1,700 corporate observations.</p>
+          <span class="work-card-arrow">Corporate Credit Rating Prediction <span>&rarr;</span></span>
+        </a>
+      </div>
+      <div class="see-all-row">
+        <a href="work.html">See all seven projects &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULL QUOTE -->
+  <section>
+    <div class="container">
+      <div class="pull-quote">
+        <p>Most technical problems are also communication problems. I work on both ends.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section>
+    <div class="container">
+      <div class="about-teaser">
+        <div>
+          <p class="eyebrow mb-4">About</p>
+          <h2>I&rsquo;ve worked in fintech, optics retail, QA, and newsrooms.</h2>
+          <p class="mt-6">These sound different. They&rsquo;re not. Every role asked the same question: how do you make a complex system work better for the people using it?</p>
+          <p class="mt-4">I have a background in computer engineering and I&rsquo;m finishing a master&rsquo;s in Information Management at the University of Illinois. I&rsquo;ve built pipelines, automated test suites, e-commerce platforms, and BI dashboards across industries.</p>
+          <a href="about.html" class="btn btn-ghost mt-8">More About Me &rarr;</a>
+        </div>
+        <div>
+          <span class="currently-tag">Right now</span>
+          <p style="max-width:100%; color: var(--text-muted); margin-top: 10px;">Finishing my MS at UIUC. Running a Digital Accessibility project at the Digital Risk Office. Looking for full-time roles in data engineering or analytics starting mid-2026.</p>
+          <hr style="border:none; border-top:1px solid var(--border); margin:28px 0;" />
+          <p class="eyebrow mb-4">Open to</p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+            <li style="font-size:0.9rem; color:var(--text-muted);">&rarr; Data engineering &amp; analytics roles</li>
+            <li style="font-size:0.9rem; color:var(--text-muted);">&rarr; BI / analytics engineering</li>
+            <li style="font-size:0.9rem; color:var(--text-muted);">&rarr; Technical product &amp; operations</li>
+            <li style="font-size:0.9rem; color:var(--text-muted);">&rarr; Champaign IL, remote, or open to relocate</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary mt-8">Get In Touch &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Yashvi Bhatt</div>
+        <p class="footer-tagline">Built carefully. Updated regularly. No Lorem Ipsum was harmed.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/documents/resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    var entries = [
+      // ── 2026 ──
+      { year: 2026, type: 'research', label: 'Research', title: 'Graduate Research Assistant', org: 'Health Informatics Center &middot; University of Illinois', dates: 'Aug 2025 &ndash; Present', bullets: ['Support research documentation and structured summaries for interdisciplinary stakeholders', 'Translate technical material into accessible written deliverables', 'Assist in organizing and presenting research outputs across project milestones'] },
+
+      // ── 2025 ──
+      { year: 2025, type: 'research', label: 'Teaching', title: 'Graduate Teaching Assistant', org: 'FIN 221 Corporate Finance &middot; UIUC', dates: 'Aug &ndash; Dec 2025', bullets: ['Evaluated quantitative assignments and provided structured written feedback', 'Helped clarify complex financial concepts for students', 'Maintained consistent grading standards across large submission volumes'] },
+      { year: 2025, type: 'research', label: 'Research', title: 'Digital Accessibility Assistant', org: 'Digital Risk Office &middot; UIUC', dates: 'Oct 2025 &ndash; Jan 2026', bullets: ['Remediated institutional documents using Equidox and Adobe Acrobat Pro', 'Implemented proper heading hierarchy, tagging structure, and reading order', 'Ensured documents met WCAG digital accessibility standards'] },
+      { year: 2025, type: 'project', label: 'Project', title: 'Market Returns Around VIX Peaks', org: 'Python &middot; Event Study &middot; Finance', dates: '2025', bullets: ['~40 VIX peaks analyzed (2016&ndash;present)', 'S&amp;P 500: &minus;0.24%/day pre-peak &rarr; +0.19%/day post-peak', 'Energy and Financials led post-peak sector recovery'] },
+      { year: 2025, type: 'project', label: 'Project', title: 'Corporate Credit Rating Prediction', org: 'Python &middot; scikit-learn &middot; Machine Learning', dates: '2025', bullets: ['78.6% binary classification accuracy (Investment vs. Speculative)', 'Cross-validated on 1,700 corporate observations (RepeatedStratifiedKFold)', '4 algorithms benchmarked: Random Forest, AdaBoost, LR, Voting Ensemble'] },
+      { year: 2025, type: 'project', label: 'Project', title: 'Asian Option Pricing &middot; Neural Networks', org: 'PyTorch &middot; Quantitative Finance', dates: '2025', bullets: ['5 architectures compared: MLP, CNN, LSTM, CNN-LSTM, TCN', 'MLP best performer: MAE 0.0256, RMSE 0.0860', 'Near-instant inference vs. 50k-path Monte Carlo simulation'] },
+      { year: 2025, type: 'campus', label: 'Campus', title: 'Camp Counselor', org: 'Active Illini Day Camp &middot; UIUC', dates: 'Spring 2025', bullets: ['Supervised children in structured recreational activities', 'Ensured safety and positive group participation', 'Supported daily camp operations and coordination'] },
+
+      // ── 2024 ──
+      { year: 2024, type: 'edu', label: 'Education', title: 'MS Information Management &mdash; Started', org: 'University of Illinois Urbana-Champaign', dates: 'Aug 2024 &ndash; Present', bullets: ['Concentration: Finance &amp; Analytics', 'Graduate coursework: financial modeling, data systems, statistics', 'GRA, GTA, and Digital Accessibility roles held during program'] },
+      { year: 2024, type: 'project', label: 'Project', title: 'Automated Financial Data Pipeline', org: 'Python &middot; MySQL &middot; ETL', dates: '2024', bullets: ['Multi-source ETL: two CSV feeds + simulated FX-rate API', '12-step cleaning process &middot; 8 DQ checks per run &middot; 35 pytest tests', 'Full audit trail: per-run JSON DQ report + pipeline_runs database record'] },
+      { year: 2024, type: 'project', label: 'Project', title: 'Ford Stock Return Prediction', org: 'R &middot; Statistical Modeling &middot; Time-Series', dates: '2024', bullets: ['4 regression models: OLS, Stepwise AIC, Mallows&rsquo; Cp, CAPM', '263 monthly observations (Jan 2004&ndash;Nov 2025)', 'VIF diagnostics and robust HC standard errors applied'] },
+      { year: 2024, type: 'project', label: 'Project', title: 'Wildfire Hotspot &amp; Risk Zone Analysis', org: 'R &middot; Geospatial Analysis &middot; Data Analysis', dates: '2024', bullets: ['4 research questions on wildfire spatial distribution', 'Hotspot clustering and seasonal pattern analysis', 'Formal report with spatial visualizations'] },
+      { year: 2024, type: 'campus', label: 'Campus', title: 'Barista', org: 'University Dining Services &middot; UIUC', dates: 'Fall 2024', bullets: ['Fast-paced campus caf&eacute; environment serving students and staff', 'Managed orders and customer interactions during peak hours'] },
+
+      // ── 2023 ──
+      { year: 2023, type: 'edu', label: 'Education', title: 'B.Tech Computer Engineering &mdash; Graduated', org: 'Mukesh Patel School of Technology Management &middot; Mumbai', dates: 'May 2023', bullets: ['GPA 3.59 &middot; Graduated with honours', 'NMIMS university institution', 'Undergraduate thesis: E-Concessionaire OCR System'] },
+      { year: 2023, type: 'project', label: 'Project', title: 'E-Concessionaire OCR System', org: 'Python &middot; OCR &middot; Database Authentication', dates: '2022&ndash;2023', bullets: ['Built under contract for Indian Railways', 'Processing time: 15 days &rarr; 2 days (87% faster)', 'Encrypted verification &middot; full audit trail'] },
+
+      // ── 2022 ──
+      { year: 2022, type: 'work', label: 'Intern', title: 'Web Developer &amp; Power BI Intern', org: 'Sapient Wealth Advisors Ltd &middot; Mumbai', dates: 'May &ndash; Nov 2022', bullets: ['6+ Power BI dashboards integrating real-time financial &amp; behavioral data', 'API-driven ingestion pipelines &rarr; 35% reduction in manual reporting effort', 'SQL optimisation &rarr; 28% faster data retrieval'] },
+
+      // ── 2021 ──
+      { year: 2021, type: 'work', label: 'Full-time', title: 'Senior Editor', org: 'Mid Day &mdash; Local News Publication &middot; Mumbai', dates: 'Apr 2021 &ndash; Aug 2024', bullets: ['3+ years at one of Mumbai&rsquo;s major daily newspapers', 'Published cultural essays, science communication, and UN-affiliated profiles', 'Daily editorial quality control and high-volume workflow management'] },
+      { year: 2021, type: 'work', label: 'Intern', title: 'Quality Assurance Intern', org: 'ARCON &middot; Mumbai', dates: 'Jan &ndash; May 2021', bullets: ['100+ automated scripts with Python &amp; Selenium', '50% reduction in manual testing effort', 'Pre-production data pipeline defect detection'] },
+      { year: 2021, type: 'work', label: 'Intern', title: 'Web Development Intern', org: 'SBI Mutual Fund &middot; Mumbai', dates: 'Aug &ndash; Sep 2021', bullets: ['Updated financial product pages for major Indian asset manager', 'Improved layout hierarchy and accessibility of investment content', 'Maintained brand and formatting consistency across publication'] },
+
+      // ── 2020 ──
+      { year: 2020, type: 'work', label: 'Intern', title: 'Web &amp; Database Intern', org: 'GALA Optics Limited &middot; Mumbai', dates: 'Dec 2019 &ndash; Nov 2020', bullets: ['Built full-stack e-commerce platform from scratch (front-end to backend)', 'SQL optimisation &rarr; 30% faster data retrieval on product/order queries', 'Secure API-based transaction processing at scale'] },
+
+      // ── 2019 ──
+      { year: 2019, type: 'edu', label: 'Education', title: 'B.Tech Computer Engineering &mdash; Started', org: 'Mukesh Patel School of Technology Management &middot; Mumbai', dates: 'Aug 2019', bullets: ['Began undergraduate degree in Computer Engineering', 'Foundation in software development, algorithms, and systems'] },
+    ];
+
+    var wrap = document.getElementById('tl-home-wrap');
+    if (!wrap) return;
+
+    // Group by year descending (most recent left)
+    var yearMap = {};
+    entries.forEach(function (e) {
+      if (!yearMap[e.year]) yearMap[e.year] = [];
+      yearMap[e.year].push(e);
+    });
+    var years = Object.keys(yearMap).map(Number).sort(function (a, b) { return b - a; });
+
+    var html = '';
+    years.forEach(function (year) {
+      html += '<div class="tl-home-year" data-year="' + year + '">';
+      html += '<div class="tl-home-year-head"><span class="tl-home-year-num">' + year + '</span></div>';
+      html += '<div class="tl-home-year-entries">';
+      yearMap[year].forEach(function (e) {
+        html += '<div class="tl-home-entry" data-type="' + e.type + '">';
+        html += '<div class="tl-home-card">';
+        html += '<div class="tl-home-card-top">';
+        html += '<div class="tl-home-card-left">';
+        html += '<p class="tl-home-card-title">' + e.title + '</p>';
+        html += '<p class="tl-home-card-org">' + e.org + '</p>';
+        html += '</div>';
+        html += '<div class="tl-home-card-right">';
+        html += '<span class="tl-home-card-dates">' + e.dates + '</span>';
+        html += '<span class="tl-home-badge ' + e.type + '">' + e.label + '</span>';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="tl-home-body"><div class="tl-home-body-inner"><ul>';
+        e.bullets.forEach(function (b) { html += '<li>' + b + '</li>'; });
+        html += '</ul></div></div>';
+        html += '</div>'; // card
+        html += '</div>'; // entry
+      });
+      html += '</div>'; // year-entries
+      html += '</div>'; // year
+    });
+    wrap.innerHTML = html;
+
+    // Inject track line sized to exact scroll content width
+    function setTrackLine() {
+      var existing = wrap.querySelector('.tl-home-track-line');
+      if (existing) existing.remove();
+      var line = document.createElement('div');
+      line.className = 'tl-home-track-line';
+      line.style.width = wrap.scrollWidth + 'px';
+      wrap.insertBefore(line, wrap.firstChild);
+    }
+    requestAnimationFrame(setTrackLine);
+
+    // Touch / click expand (hover is CSS-only on desktop)
+    wrap.addEventListener('click', function (e) {
+      var card = e.target.closest('.tl-home-card');
+      if (!card) return;
+      if (window.matchMedia('(hover: none)').matches) {
+        card.closest('.tl-home-entry').classList.toggle('tl-open');
+      }
+    });
+
+    // Filter buttons
+    document.querySelectorAll('.tl-home-filter').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tl-home-filter').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.dataset.filter;
+        document.querySelectorAll('.tl-home-entry').forEach(function (el) {
+          el.classList.toggle('tl-hidden', f !== 'all' && el.dataset.type !== f);
+        });
+        document.querySelectorAll('.tl-home-year').forEach(function (g) {
+          g.classList.toggle('tl-all-hidden', g.querySelectorAll('.tl-home-entry:not(.tl-hidden)').length === 0);
+        });
+        requestAnimationFrame(setTrackLine);
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

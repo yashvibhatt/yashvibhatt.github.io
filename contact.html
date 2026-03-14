@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Yashvi Bhatt</title>
+  <meta name="description" content="Available for full-time roles starting mid-2026. Open to conversations in data engineering, analytics, and technical product work." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Yashvi Bhatt</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="nav-cta active">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="page-header">
+      <p class="eyebrow">Contact</p>
+      <h1>Available for Work</h1>
+      <p>Looking for full-time roles starting mid-2026. Open to conversations now.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT LAYOUT -->
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- LEFT: Info -->
+      <div class="contact-intro">
+        <h2>Let&rsquo;s Talk</h2>
+        <p>I&rsquo;m finishing my MS at UIUC and looking for full-time roles in data engineering, analytics, or technical product work. If you&rsquo;re hiring, or know someone who is, I&rsquo;d like to hear from you.</p>
+
+        <p>The fastest way to reach me is email. I typically respond within 24 hours.</p>
+
+        <p style="font-size:0.875rem; max-width:100%; margin-top:0;">What I bring:</p>
+        <ul class="contact-list">
+          <li>Four years of hands-on data and engineering work across fintech, retail, QA, and public sector</li>
+          <li>A writing background that makes technical communication actually useful</li>
+          <li>CFA Level I passed; Level II candidate, May 2026 &middot; AWS Certified</li>
+          <li>Open to relocation; comfortable remote and hybrid</li>
+          <li>Available from mid-2026</li>
+        </ul>
+
+        <div class="contact-links">
+          <a href="mailto:ybhatt2@illinois.edu" class="contact-link-row">
+            <span class="contact-link-icon">@</span>
+            ybhatt2@illinois.edu
+          </a>
+          <a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener" class="contact-link-row">
+            <span class="contact-link-icon">in</span>
+            linkedin.com/in/yashvi-bhatt
+          </a>
+          <a href="https://github.com/yashvibhatt" target="_blank" rel="noopener" class="contact-link-row">
+            <span class="contact-link-icon">&lt;/&gt;</span>
+            github.com/yashvibhatt
+          </a>
+          <a href="assets/documents/resume.pdf" target="_blank" class="contact-link-row">
+            <span class="contact-link-icon">&#128196;</span>
+            Download Resume
+            <span style="font-size:0.75rem; color:var(--text-muted); margin-left:auto;">One page. All the relevant parts.</span>
+          </a>
+        </div>
+
+        <hr style="border:none; border-top:1px solid var(--border); margin: 32px 0;" />
+
+        <div>
+          <p class="eyebrow mb-4">For freelance projects</p>
+          <p style="max-width:100%;">I also take on select freelance projects: data pipelines, dashboards, QA automation, and web builds. Fixed-scope engagements so you know what you&rsquo;re getting and when. Describe what you&rsquo;re working on in the form.</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div>
+        <div class="contact-form">
+          <form id="contactForm" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">What is this about?</label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select one</option>
+                <option value="job">Job opportunity</option>
+                <option value="freelance">Freelance project</option>
+                <option value="hello">Just saying hello</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell me what you&#8217;re working on. Don&#8217;t worry about making it sound polished." required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit">Send It</button>
+            <p class="form-note">I typically respond within 24 hours.</p>
+          </form>
+
+          <!-- Success state (hidden by default) -->
+          <div id="formSuccess" style="display:none; text-align:center; padding: 40px 20px;">
+            <div style="font-size:2rem; margin-bottom:16px;">&#10003;</div>
+            <h3 style="margin-bottom:8px;">Got it.</h3>
+            <p style="margin:0 auto; text-align:center;">I&rsquo;ll be back to you within a day.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.contact-layout -->
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Yashvi Bhatt</div>
+        <p class="footer-tagline">Built carefully. Updated regularly. No Lorem Ipsum was harmed.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/documents/resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      // In production: replace with your form service (Formspree, Netlify Forms, etc.)
+      // For now, show the success state
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

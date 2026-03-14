@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Yashvi Bhatt</title>
+  <meta name="description" content="Seven projects. Data pipelines, QA automation, web development, and financial systems. What broke, what I built, what changed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Tile grid ── */
+    .cs-tile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      align-items: stretch;           /* equal height per row */
+      margin-bottom: 80px;
+    }
+    @media (max-width: 960px) { .cs-tile-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 580px)  { .cs-tile-grid { grid-template-columns: 1fr; } }
+
+    /* Collapsed tile */
+    .cs-tile-grid .case-study {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+      background: var(--bg-2);
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-tile-grid .case-study:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+
+    /* Expanded tile — full width, reverts to original case-study look */
+    .cs-tile-grid .case-study.cs-open {
+      grid-column: 1 / -1;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      border-radius: 0;
+      padding: 48px 0;
+      cursor: default;
+      display: block;
+      box-shadow: none;
+    }
+    .cs-tile-grid .case-study.cs-open:hover {
+      border-color: var(--border);
+      box-shadow: none;
+    }
+
+    /* Tile header: stack vertically, kill the 48px bottom margin from style.css */
+    .cs-tile-grid .case-study:not(.cs-open) .cs-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 0;
+      flex: 1;
+    }
+
+    /* Compact h2 inside tile */
+    .cs-tile-grid .case-study:not(.cs-open) .cs-header h2 {
+      font-size: 1.05rem;
+      line-height: 1.35;
+      margin: 0;
+    }
+
+    /* Metric stat: left-align and push below tags */
+    .cs-tile-grid .case-study:not(.cs-open) .cs-header > div:last-of-type {
+      text-align: left !important;
+      margin-top: 16px;
+    }
+
+    /* Body accordion */
+    .cs-body {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.45s ease, opacity 0.3s ease;
+    }
+    .case-study.cs-open .cs-body { max-height: 4000px; opacity: 1; }
+
+    /* Header stays clickable */
+    .cs-header { cursor: pointer; user-select: none; }
+
+    /* Toggle button — auto top margin pushes it to bottom of tile */
+    .cs-toggle-btn {
+      margin-top: 20px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      padding: 5px 14px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: color 0.15s, border-color 0.15s;
+      align-self: flex-start;
+    }
+    .cs-toggle-btn:hover { color: var(--accent); border-color: var(--accent); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Yashvi Bhatt</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html" class="active">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="page-header">
+      <p class="eyebrow">Projects</p>
+      <h1>The Projects</h1>
+      <p>Seven projects. What broke, what I built, what changed.</p>
+    </div>
+  </div>
+
+  <!-- CASE STUDIES -->
+  <div class="container">
+
+    <!-- CS 1: FINANCIAL PIPELINE -->
+    <div class="case-study" id="financial-pipeline">
+      <div class="cs-header">
+        <div>
+          <h2>Automated Financial Data Pipeline</h2>
+          <div class="cs-tags">
+            <span class="cs-tag">Data Engineering</span>
+            <span class="cs-tag">ETL</span>
+            <span class="cs-tag">Python</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:2rem; font-weight:700; color:var(--accent);">8</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;">DQ Checks Per Run</div>
+        </div>
+      </div>
+
+      <div class="cs-grid">
+        <div class="cs-block">
+          <h4>Before</h4>
+          <p>Two financial data sources with inconsistent formats, mismatched currency codes, and different ID schemes. Manual consolidation in Excel: error-prone, no audit trail, no quality checks. Duplicate transaction IDs from card-processor retry logic and null merchant names were causing formula errors in downstream reports.</p>
+        </div>
+        <div class="cs-block">
+          <h4>After</h4>
+          <ul>
+            <li>Multi-source extraction: two CSV feeds + simulated FX-rate API merged cleanly</li>
+            <li>12-step deterministic cleaning: dedup, null fills, type coercion, currency validation</li>
+            <li>8 automated DQ checks on every run: null, duplicate, schema, amount range, z-score anomaly, date range, category, and status validation</li>
+            <li>All amounts normalised to USD via configurable FX rates</li>
+            <li>Full audit trail: per-run JSON DQ report + <code>pipeline_runs</code> database record</li>
+            <li>MySQL output connects directly to Metabase, Tableau, or Grafana</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-shipped">
+        <h4>What I Shipped</h4>
+        <p>A production-style Python ETL pipeline that extracts from two CSV sources and a simulated FX-rate API, applies a 12-step cleaning process, runs 8 data-quality validations, converts all amounts to USD, and loads results into MySQL via idempotent batch upsert. Every run writes a structured JSON DQ report and a <code>pipeline_runs</code> audit record. Includes dry-run mode (no database required), 35 pytest tests across extract, transform, and validate layers, and 10 analytics-ready SQL queries for BI tools.</p>
+        <p class="cs-stack">Tech: Python &middot; MySQL &middot; pandas &middot; pytest &middot; ETL &middot; Data Quality Automation</p>
+      </div>
+
+      <div class="cs-learned">
+        <h4>What I&rsquo;d tell myself before starting</h4>
+        <p>The cleaning step took longer than the pipeline itself. Twelve steps sounds like a lot until you see what raw data from two mismatched systems actually looks like. Schema standardisation first, automation second &mdash; that order matters.</p>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="https://github.com/yashvibhatt/financial-data-pipeline" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CS 2: FORD STOCK RETURN PREDICTION -->
+    <div class="case-study" id="ford-stock-prediction">
+      <div class="cs-header">
+        <div>
+          <h2>Ford Stock Return Prediction</h2>
+          <div class="cs-tags">
+            <span class="cs-tag">R</span>
+            <span class="cs-tag">Statistical Modeling</span>
+            <span class="cs-tag">Time-Series</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:2rem; font-weight:700; color:var(--accent);">4</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;">Models Compared</div>
+        </div>
+      </div>
+
+      <div class="cs-grid">
+        <div class="cs-block">
+          <h4>Before</h4>
+          <p>Ford&rsquo;s monthly stock return is shaped by dozens of macroeconomic variables &mdash; S&amp;P 500 movements, oil prices, treasury yields, VIX, exchange rates. Standard linear regression doesn&rsquo;t handle multicollinearity or time-structure in financial data well. 263 monthly observations (Jan 2004&ndash;Nov 2025) spanning multiple market cycles.</p>
+        </div>
+        <div class="cs-block">
+          <h4>After</h4>
+          <ul>
+            <li>4 regression models built and compared: OLS, Stepwise AIC, Mallows&rsquo; Cp, CAPM</li>
+            <li>Time-aware train/test split to respect temporal ordering</li>
+            <li>Robust HC standard errors applied to correct for heteroskedasticity</li>
+            <li>VIF diagnostics used to identify and address multicollinearity</li>
+            <li>Significant macro predictors of Ford&rsquo;s monthly return identified</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-shipped">
+        <h4>What I Shipped</h4>
+        <p>A full regression study in R comparing four approaches to predicting Ford monthly returns from macroeconomic and market data. Includes model selection, multicollinearity diagnostics, heteroskedasticity-robust inference, and out-of-sample evaluation using a time-aware split.</p>
+        <p class="cs-stack">Tech: R &middot; ggplot2 &middot; dplyr &middot; MASS &middot; leaps &middot; lmtest &middot; estimatr &middot; corrplot &middot; knitr</p>
+      </div>
+
+      <div class="cs-learned">
+        <h4>What I&rsquo;d tell myself before starting</h4>
+        <p>Running stepwise selection without checking multicollinearity first gives you a confident model with inflated coefficients. VIF diagnostics before model selection, not after.</p>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="https://github.com/yashvibhatt/ford-project" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CS 3: VIX PEAKS EVENT STUDY -->
+    <div class="case-study" id="vix-event-study">
+      <div class="cs-header">
+        <div>
+          <h2>Market Returns Around VIX Peaks</h2>
+          <div class="cs-tags">
+            <span class="cs-tag">Python</span>
+            <span class="cs-tag">Event Study</span>
+            <span class="cs-tag">Finance</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:2rem; font-weight:700; color:var(--accent);">~40</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;">VIX Peaks Analyzed</div>
+        </div>
+      </div>
+
+      <div class="cs-grid">
+        <div class="cs-block">
+          <h4>Before</h4>
+          <p>VIX spikes are widely treated as fear signals, but the equity return pattern around peaks &mdash; before and after &mdash; is rarely examined systematically. Do markets actually mean-revert post-spike? Does the response differ by sector or volatility tier? No structured answer existed for the 2016&ndash;present period.</p>
+        </div>
+        <div class="cs-block">
+          <h4>After</h4>
+          <ul>
+            <li>~40 VIX peaks detected (2016&ndash;present, local max &ge;25, &plusmn;5-day window)</li>
+            <li>S&amp;P 500 return: &minus;0.24%/day pre-peak &rarr; +0.19%/day post-peak</li>
+            <li>High-volatility stocks: &minus;0.29% &rarr; +0.30% (amplified reversal)</li>
+            <li>Energy and Financials led post-peak recovery across GICS sectors</li>
+            <li>Event windows: &plusmn;10 trading days around each peak</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-shipped">
+        <h4>What I Shipped</h4>
+        <p>A Python-based event study examining equity market behavior around CBOE VIX spikes. Automated peak detection, average abnormal return (AAR) and cumulative abnormal return (CAR) calculations, volatility-sorted portfolio analysis, and GICS sector breakdown. Visualizations for all four dimensions.</p>
+        <p class="cs-stack">Tech: Python &middot; pandas &middot; numpy &middot; scipy &middot; yfinance &middot; matplotlib &middot; Jupyter</p>
+      </div>
+
+      <div class="cs-learned">
+        <h4>What I&rsquo;d tell myself before starting</h4>
+        <p>Sector labels from live API data shift over time as companies reclassify. The size proxy using volatility sorting is imperfect but captures the intended risk-tier effect well enough for this event window.</p>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="https://github.com/yashvibhatt/vix-peaks-event-study" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CS 4: CREDIT RATING PREDICTION -->
+    <div class="case-study" id="credit-rating-ml">
+      <div class="cs-header">
+        <div>
+          <h2>Corporate Credit Rating Prediction</h2>
+          <div class="cs-tags">
+            <span class="cs-tag">Machine Learning</span>
+            <span class="cs-tag">Python</span>
+            <span class="cs-tag">scikit-learn</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:2rem; font-weight:700; color:var(--accent);">78.6%</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;">Binary Classification Accuracy</div>
+        </div>
+      </div>
+
+      <div class="cs-grid">
+        <div class="cs-block">
+          <h4>Before</h4>
+          <p>Moody&rsquo;s corporate credit ratings encode complex relationships across 26 financial variables including EBITDA, ROA, ROE, and debt ratios. The rating process is opaque. The question: can a classifier reproduce investment-grade vs. speculative-grade distinctions from financial ratios alone?</p>
+        </div>
+        <div class="cs-block">
+          <h4>After</h4>
+          <ul>
+            <li>Multiclass (8 rating groups): Voting Ensemble 67.5%, Random Forest 67.4%</li>
+            <li>Binary (Investment vs. Speculative): Decision Tree and Voting Ensemble both 78.6%</li>
+            <li>Cross-validated on 1,700 corporate observations (RepeatedStratifiedKFold, 5&times;2)</li>
+            <li>AdaBoost and Logistic Regression also benchmarked</li>
+            <li>Key financial predictors of rating regime identified</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-shipped">
+        <h4>What I Shipped</h4>
+        <p>A full ML classification pipeline in Python. Four algorithms implemented and compared across both multiclass and binary formulations. Rigorous cross-validation with RepeatedStratifiedKFold to prevent class imbalance leakage. Feature importance analysis to identify which financial ratios carry the most signal.</p>
+        <p class="cs-stack">Tech: Python &middot; scikit-learn &middot; pandas &middot; seaborn &middot; Random Forest &middot; AdaBoost &middot; Logistic Regression &middot; Voting Ensemble</p>
+      </div>
+
+      <div class="cs-learned">
+        <h4>What I&rsquo;d tell myself before starting</h4>
+        <p>Collapsing 8 rating classes to binary investment/speculative roughly doubles accuracy. The model isn&rsquo;t predicting ratings &mdash; it&rsquo;s detecting risk regime. That&rsquo;s actually the more actionable question.</p>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="https://github.com/yashvibhatt/ml-finance-models" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CS 5: ASIAN OPTION PRICING NN -->
+    <div class="case-study" id="asian-option-pricing">
+      <div class="cs-header">
+        <div>
+          <h2>Asian Option Pricing with Neural Networks</h2>
+          <div class="cs-tags">
+            <span class="cs-tag">PyTorch</span>
+            <span class="cs-tag">Quantitative Finance</span>
+            <span class="cs-tag">Deep Learning</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:2rem; font-weight:700; color:var(--accent);">5</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;">Architectures Compared</div>
+        </div>
+      </div>
+
+      <div class="cs-grid">
+        <div class="cs-block">
+          <h4>Before</h4>
+          <p>Pricing arithmetic Asian options requires Monte Carlo simulation with tens of thousands of paths. Computationally expensive by design, with no closed-form solution. The research question: can a neural network trained on synthetic GBM data serve as a fast, accurate surrogate pricer?</p>
+        </div>
+        <div class="cs-block">
+          <h4>After</h4>
+          <ul>
+            <li>MLP best performer: MAE 0.0256, RMSE 0.0860</li>
+            <li>Inference near-instant vs. 50,000-path Monte Carlo simulation</li>
+            <li>CNN, LSTM, CNN-LSTM, and TCN all tested &mdash; all overfit on available data</li>
+            <li>Adaptive sampling did not improve generalization</li>
+            <li>Dataset size identified as the binding constraint, not architecture</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-shipped">
+        <h4>What I Shipped</h4>
+        <p>A PyTorch-based surrogate pricing model trained on synthetic option data generated via Geometric Brownian Motion simulation. Five architectures benchmarked (MLP, CNN, LSTM, CNN-LSTM, TCN) with full training curves. Dataset construction, adaptive sampling experiments, and out-of-sample evaluation all documented.</p>
+        <p class="cs-stack">Tech: Python &middot; PyTorch &middot; numpy &middot; scipy &middot; pandas &middot; Geometric Brownian Motion &middot; Jupyter</p>
+      </div>
+
+      <div class="cs-learned">
+        <h4>What I&rsquo;d tell myself before starting</h4>
+        <p>MLP generalizes better here because it has fewer parameters to overfit with. The more complex architectures need data volume that the simulation budget didn&rsquo;t reach. More data &gt; better architecture when you&rsquo;re data-constrained.</p>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="https://github.com/yashvibhatt/asian-option-neural-pricing" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CS 6: WILDFIRE ANALYSIS -->
+    <div class="case-study" id="wildfire-analysis">
+      <div class="cs-header">
+        <div>
+          <h2>Wildfire Hotspot &amp; Risk Zone Analysis</h2>
+          <div class="cs-tags">
+            <span class="cs-tag">R</span>
+            <span class="cs-tag">Geospatial Analysis</span>
+            <span class="cs-tag">Data Analysis</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:2rem; font-weight:700; color:var(--accent);">4</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;">Research Questions</div>
+        </div>
+      </div>
+
+      <div class="cs-grid">
+        <div class="cs-block">
+          <h4>Before</h4>
+          <p>Wildfire risk is spatially uneven and seasonally structured, but the patterns are buried in raw incident data. Without structured analysis, resource allocation and risk communication rely on intuition. Four research questions about hotspots, high-risk zones, temporal clustering, and contributing factors needed systematic answers.</p>
+        </div>
+        <div class="cs-block">
+          <h4>After</h4>
+          <ul>
+            <li>Wildfire hotspot clusters identified geographically</li>
+            <li>High-risk zones delineated based on incident data patterns</li>
+            <li>Temporal and seasonal patterns in fire occurrence analyzed</li>
+            <li>Contributing environmental and geographic factors examined</li>
+            <li>Findings presented in a formal report with spatial visualizations</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-shipped">
+        <h4>What I Shipped</h4>
+        <p>A structured geospatial analysis of wildfire incident data addressing four research questions. Built in R with RMarkdown for reproducibility. Spatial visualizations, trend analysis, and a formal written report with findings and methodology documented end-to-end.</p>
+        <p class="cs-stack">Tech: R &middot; RMarkdown &middot; ggplot2 &middot; Geospatial Analysis</p>
+      </div>
+
+      <div class="cs-learned">
+        <h4>What I&rsquo;d tell myself before starting</h4>
+        <p>Spatial data has strong autocorrelation &mdash; nearby fires share causes, weather, and terrain. Treating observations as independent overstates statistical confidence. The way findings are framed matters as much as the analysis itself.</p>
+      </div>
+      <div style="margin-top:24px;">
+        <a href="https://github.com/yashvibhatt/wildfire-analysis" target="_blank" rel="noopener" class="btn btn-ghost">View on GitHub &rarr;</a>
+      </div>
+    </div>
+
+    <!-- CS 7: E-CONCESSIONAIRE (earliest project) -->
+    <div class="case-study" id="e-concessionaire">
+      <div class="cs-header">
+        <div>
+          <h2>E-Concessionaire OCR System</h2>
+          <div class="cs-tags">
+            <span class="cs-tag">Data Engineering</span>
+            <span class="cs-tag">Automation</span>
+            <span class="cs-tag">Python</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:2rem; font-weight:700; color:var(--accent);">87%</div>
+          <div style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.06em; text-transform:uppercase;">Faster Processing</div>
+        </div>
+      </div>
+
+      <div class="cs-grid">
+        <div class="cs-block">
+          <h4>Before</h4>
+          <p>A paper-based concessionaire form system. Every form filled by hand, collected physically, and processed manually. Fifteen days from submission to data in the system. Errors everywhere. No audit trail. No way to track status or catch mistakes before they caused delays.</p>
+        </div>
+        <div class="cs-block">
+          <h4>After</h4>
+          <ul>
+            <li>Processing time: 15 days &rarr; 2 days (87% improvement)</li>
+            <li>Documents read, validated, and stored without manual entry</li>
+            <li>Encrypted and hashed for secure document verification</li>
+            <li>Full audit trail now exists</li>
+            <li>Human error in data entry: near zero</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cs-shipped">
+        <h4>What I Shipped</h4>
+        <p>An automated OCR pipeline that reads physical forms, extracts structured data, validates it against a ruleset, and pushes it into a database without a human in the middle. Database-linked authentication streamlined the approvals flow.</p>
+        <p class="cs-stack">Tech: Python &middot; OCR &middot; Encryption &amp; Hashing &middot; Database Authentication &middot; Relational Database</p>
+      </div>
+
+      <div class="cs-learned">
+        <h4>What I&rsquo;d tell myself before starting</h4>
+        <p>OCR fails messily on bad handwriting. The real work wasn&rsquo;t the extraction; it was building validation rules that catch failures without discarding good data.</p>
+      </div>
+      <div style="margin-top:24px; padding-top:20px; border-top:1px solid var(--border);">
+        <p style="font-size:0.8rem; color:var(--text-muted); margin:0;">&#128274; Built under contract for Indian Railways. Source code is proprietary and cannot be shared publicly.</p>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- CTA STRIP -->
+  <section style="background: var(--bg-2); border-top: 1px solid var(--border); padding: 64px 0; margin-top: 80px;">
+    <div class="container" style="text-align:center;">
+      <p class="eyebrow mb-4">What&rsquo;s next</p>
+      <h2 style="margin-bottom:16px;">See what I can build for you.</h2>
+      <p style="margin: 0 auto 32px; text-align:center;">I&rsquo;m available for full-time roles starting mid-2026 and select freelance projects now.</p>
+      <div class="btn-group" style="justify-content:center;">
+        <a href="services.html" class="btn btn-primary">View Services</a>
+        <a href="contact.html" class="btn btn-ghost">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Yashvi Bhatt</div>
+        <p class="footer-tagline">Built carefully. Updated regularly. No Lorem Ipsum was harmed.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/documents/resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    (function () {
+      // 1. Find the container that holds all case studies
+      var firstCS = document.querySelector('.case-study');
+      if (!firstCS) return;
+      var parent = firstCS.parentNode;
+
+      // 2. Wrap all case studies in a tile grid
+      var grid = document.createElement('div');
+      grid.className = 'cs-tile-grid';
+      parent.insertBefore(grid, firstCS);
+      Array.from(parent.querySelectorAll(':scope > .case-study')).forEach(function (cs) {
+        grid.appendChild(cs);
+      });
+
+      // 3. Set up each tile
+      Array.from(grid.children).forEach(function (cs, i) {
+        var header = cs.querySelector('.cs-header');
+        if (!header) return;
+
+        // Wrap everything after the header in a cs-body div
+        var body = document.createElement('div');
+        body.className = 'cs-body';
+        Array.from(cs.children)
+          .filter(function (el) { return el !== header; })
+          .forEach(function (el) { body.appendChild(el); });
+        cs.appendChild(body);
+
+        // Toggle button inside header
+        var btn = document.createElement('button');
+        btn.className = 'cs-toggle-btn';
+        btn.textContent = 'Show details \u2193';
+        header.appendChild(btn);
+
+        // Toggle function
+        function toggle(e) {
+          if (e) e.stopPropagation();
+          var open = cs.classList.toggle('cs-open');
+          btn.textContent = open ? 'Hide details \u2191' : 'Show details \u2193';
+        }
+
+        // Collapsed: whole tile is clickable
+        cs.addEventListener('click', function (e) {
+          if (!cs.classList.contains('cs-open')) toggle(e);
+        });
+
+        // Expanded: only header closes it
+        header.addEventListener('click', function (e) {
+          if (cs.classList.contains('cs-open')) toggle(e);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

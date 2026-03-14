@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Yashvi Bhatt</title>
+  <meta name="description" content="Data pipelines, BI dashboards, QA automation, and web development. Practical, scoped services built around your actual problem." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Yashvi Bhatt</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="page-header">
+      <p class="eyebrow">Services</p>
+      <h1>What I Can Do For You</h1>
+      <p>Four services. Each one is practical, scoped, and built around your actual problem, not a standard package.</p>
+    </div>
+  </div>
+
+  <!-- SERVICE TILES -->
+  <div class="container">
+    <div class="services-grid">
+
+      <!-- TILE 1 -->
+      <div class="service-tile">
+        <span class="service-num">01</span>
+        <h3>Data Pipeline Design &amp; Engineering</h3>
+        <p class="for-whom">For teams sitting on data they can&rsquo;t use. Analysts spending their Mondays cleaning spreadsheets. Companies where &ldquo;the data is in there somewhere&rdquo; is a common phrase.</p>
+
+        <span class="service-section-label">What I deliver</span>
+        <ul class="service-list">
+          <li>ETL pipeline design and build (Python, Apache NiFi)</li>
+          <li>Database schema design and optimization (MySQL, PostgreSQL, Oracle)</li>
+          <li>Data source integration APIs, flat files, databases</li>
+          <li>Automated validation and cleaning logic</li>
+          <li>Documentation your next engineer can actually follow</li>
+        </ul>
+
+        <span class="service-section-label">Problems it solves</span>
+        <ul class="service-list service-problems">
+          <li>Data scattered across five systems with no clean way to combine it</li>
+          <li>Manual data prep eating analyst time every week</li>
+          <li>Pipelines that work but nobody understands anymore</li>
+          <li>Reporting that&rsquo;s always a day behind</li>
+        </ul>
+
+        <div class="service-proof">
+          <span>Proof</span>
+          <p>A financial data pipeline I built cut manual data prep effort by 40% and brought Tableau dashboards from next-day to near real-time. <a href="work.html#financial-pipeline">See the case study &rarr;</a></p>
+        </div>
+      </div>
+
+      <!-- TILE 2 -->
+      <div class="service-tile">
+        <span class="service-num">02</span>
+        <h3>BI Dashboards &amp; Analytics</h3>
+        <p class="for-whom">For business teams who have data and need to see it clearly. Managers making decisions off gut instinct. Analysts who know what questions to ask but can&rsquo;t surface the answers fast enough.</p>
+
+        <span class="service-section-label">What I deliver</span>
+        <ul class="service-list">
+          <li>Dashboard design and build (Power BI, Tableau)</li>
+          <li>SQL query optimization for faster load times</li>
+          <li>Metric framework design figuring out which numbers actually matter</li>
+          <li>Training so your team can use it without calling me</li>
+        </ul>
+
+        <span class="service-section-label">Problems it solves</span>
+        <ul class="service-list service-problems">
+          <li>Dashboards that take three minutes to load</li>
+          <li>Reports that exist but nobody trusts</li>
+          <li>Metrics tracked because they&rsquo;ve always been tracked, not because they&rsquo;re useful</li>
+          <li>Data that tells you what happened, but not why</li>
+        </ul>
+
+        <div class="service-proof">
+          <span>Proof</span>
+          <p>Rebuilt Power BI dashboards at Sapient Wealth Advisors with automated refresh and optimized SQL. Reports went from requiring manual updates to staying current on their own. <a href="work.html#sapient-wealth">See the case study &rarr;</a></p>
+        </div>
+      </div>
+
+      <!-- TILE 3 -->
+      <div class="service-tile">
+        <span class="service-num">03</span>
+        <h3>QA &amp; Test Automation</h3>
+        <p class="for-whom">For engineering teams releasing software on tight cycles. QA teams drowning in manual regression. Product teams who&rsquo;ve been burned by defects that should have been caught.</p>
+
+        <span class="service-section-label">What I deliver</span>
+        <ul class="service-list">
+          <li>Automated test suite design and build (Selenium, Python, TestNG)</li>
+          <li>Test case design edge cases, not just happy paths</li>
+          <li>Integration with existing release pipelines</li>
+          <li>Defect documentation and reporting</li>
+          <li>Scalable framework built for the team, not just the person who built it</li>
+        </ul>
+
+        <span class="service-section-label">Problems it solves</span>
+        <ul class="service-list service-problems">
+          <li>Manual testing eating release cycle time</li>
+          <li>Defects reaching production that regression should have caught</li>
+          <li>No test coverage documentation when someone new joins</li>
+          <li>QA bottlenecking the whole team</li>
+        </ul>
+
+        <div class="service-proof">
+          <span>Proof</span>
+          <p>Built 100+ automated test scripts for ARCON that achieved 95% defect detection and cut manual QA workload by 50%. <a href="work.html#arcon-qa">See the case study &rarr;</a></p>
+        </div>
+      </div>
+
+      <!-- TILE 4 -->
+      <div class="service-tile">
+        <span class="service-num">04</span>
+        <h3>Web Development &amp; Product Build</h3>
+        <p class="for-whom">For small businesses that need a site that actually works. Startups needing a fast, clean MVP. Teams with a developer gap on a project that&rsquo;s mostly frontend.</p>
+
+        <span class="service-section-label">What I deliver</span>
+        <ul class="service-list">
+          <li>Website design and build (HTML, CSS, JavaScript)</li>
+          <li>WordPress and CMS implementation</li>
+          <li>E-commerce setup catalog, cart, checkout, payment API</li>
+          <li>Performance optimization and SQL backend support</li>
+          <li>Handoff documentation so you&rsquo;re not dependent on me forever</li>
+        </ul>
+
+        <span class="service-section-label">Problems it solves</span>
+        <ul class="service-list service-problems">
+          <li>Site that&rsquo;s slow, dated, or hard to update</li>
+          <li>Business with no online purchasing capability</li>
+          <li>Developer handoffs that leave the client helpless</li>
+          <li>Features that work but create database bottlenecks</li>
+        </ul>
+
+        <div class="service-proof">
+          <span>Proof</span>
+          <p>Built a full e-commerce platform for GALA Optics from scratch catalog, cart, checkout, API integrations, with 30% faster SQL queries built in. <a href="work.html#gala-optics">See the case study &rarr;</a></p>
+        </div>
+      </div>
+
+    </div><!-- /.services-grid -->
+
+    <!-- FOOTER NUDGE -->
+    <div style="text-align:center; padding: 64px 0 0;">
+      <p style="margin: 0 auto 24px; text-align:center; font-size:1.05rem;">Not sure which applies? Just describe what you&rsquo;re stuck on. We&rsquo;ll figure it out.</p>
+      <a href="contact.html" class="btn btn-primary">Get In Touch &rarr;</a>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Yashvi Bhatt</div>
+        <p class="footer-tagline">Built carefully. Updated regularly. No Lorem Ipsum was harmed.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/documents/resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

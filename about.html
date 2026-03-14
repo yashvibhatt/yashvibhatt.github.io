@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Yashvi Bhatt</title>
+  <meta name="description" content="MS Information Management, UIUC. Data engineer with a background in computer engineering, financial analytics, and editorial writing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── about page styles ── */
+    .tl-filters {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .tl-filter {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      padding: 5px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.15s;
+    }
+    .tl-filter:hover, .tl-filter.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-dim);
+    }
+
+    /* Scroll hint — desktop only (horizontal layout) */
+    .tl-scroll-hint {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.5;
+      margin-bottom: 20px;
+      display: block;
+    }
+    @media (max-width: 768px) { .tl-scroll-hint { display: none; } }
+
+    /* ── Horizontal scroll track ── */
+    #tl-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      overflow-x: auto;
+      overflow-y: visible;
+      position: relative;
+      padding-bottom: 40px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+    #tl-wrap::-webkit-scrollbar { height: 4px; }
+    #tl-wrap::-webkit-scrollbar-track { background: transparent; }
+    #tl-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    /* Horizontal timeline line — sits at 20px from top (center of dot) */
+    #tl-wrap::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Year column ── */
+    .tl-year-group {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 240px;
+      max-width: 280px;
+      flex-shrink: 0;
+      padding-right: 20px;
+      margin-bottom: 0;
+    }
+    .tl-year-left {
+      width: auto;
+      padding: 0;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    /* Year dot — margin-top: 15px → center at 15+5=20px → aligns with track line */
+    .tl-year-left::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 15px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 3px var(--bg);
+    }
+    .tl-year-num {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      line-height: 1;
+      display: block;
+    }
+    .tl-year-right {
+      flex: 1;
+      border-left: none;
+      padding-left: 0;
+      margin-left: 0;
+      padding-bottom: 0;
+      width: 100%;
+    }
+
+    /* ── Entry ── */
+    .tl-entry {
+      position: relative;
+      margin-bottom: 8px;
+    }
+    /* Hide old left-side dot in horizontal mode */
+    .tl-entry::before { display: none; }
+
+    /* Card */
+    .tl-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      user-select: none;
+    }
+    .tl-card:hover { border-color: var(--accent); background: var(--bg-3); }
+    .tl-entry[data-type="work"] .tl-card { border-left: 2px solid var(--accent); }
+    .tl-entry[data-type="edu"] .tl-card   { border-left: 2px solid #7A9E7E; }
+    .tl-entry[data-type="campus"] .tl-card { border-left: 2px solid #8BB8D0; }
+
+    .tl-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .tl-card-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.3;
+    }
+    .tl-entry[data-type="work"] .tl-card-title { font-size: 0.9rem; }
+    .tl-entry[data-type="project"] .tl-card-title { font-size: 0.8rem; }
+    .tl-entry[data-type="edu"] .tl-card-title { font-size: 0.82rem; }
+
+    .tl-card-org {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin: 3px 0 0;
+      line-height: 1.4;
+    }
+    .tl-card-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
+      flex-shrink: 0;
+    }
+    .tl-card-dates {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .tl-badge {
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .tl-badge.work    { color: var(--accent);     background: var(--accent-dim); }
+    .tl-badge.campus  { color: #8BB8D0;           background: rgba(139,184,208,0.1); }
+    .tl-badge.project { color: var(--text-muted); background: var(--bg-3); }
+    .tl-badge.edu     { color: #7A9E7E;           background: rgba(122,158,126,0.1); }
+
+    /* Expandable body */
+    .tl-body {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.25s ease;
+    }
+    .tl-entry.tl-open .tl-body { max-height: 400px; opacity: 1; }
+    .tl-body-inner {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+    }
+    .tl-body-inner ul { list-style: none; padding: 0; margin: 0; }
+    .tl-body-inner li {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .tl-body-inner li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.68rem;
+      line-height: 1.9;
+    }
+
+    /* Filter states */
+    .tl-entry.tl-hidden { display: none; }
+    .tl-year-group.tl-all-hidden { display: none; }
+
+    /* Chevron */
+    .tl-chevron {
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      transition: transform 0.25s;
+      margin-top: 2px;
+    }
+    .tl-entry.tl-open .tl-chevron { transform: rotate(180deg); }
+
+    /* ── Mobile: revert to vertical ── */
+    @media (max-width: 768px) {
+      #tl-wrap {
+        display: block;
+        overflow-x: visible;
+      }
+      #tl-wrap::before { display: none; }
+      .tl-year-group {
+        display: flex;
+        flex-direction: row;
+        max-width: none;
+        min-width: auto;
+        padding-right: 0;
+        margin-bottom: 8px;
+      }
+      .tl-year-left {
+        width: 52px;
+        flex-shrink: 0;
+        padding-top: 13px;
+        text-align: right;
+        align-items: flex-end;
+        margin-bottom: 0;
+      }
+      .tl-year-left::before { display: none; }
+      .tl-year-right {
+        flex: 1;
+        border-left: 1px solid var(--border);
+        padding-left: 20px;
+        padding-bottom: 20px;
+        margin-left: 14px;
+      }
+      .tl-entry { margin-bottom: 10px; }
+      .tl-entry::before {
+        display: block;
+        content: '';
+        position: absolute;
+        left: -28px;
+        top: 14px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--bg-3);
+        border: 2px solid var(--bg);
+        z-index: 1;
+      }
+      .tl-entry[data-type="work"]::before   { background: var(--accent); }
+      .tl-entry[data-type="campus"]::before { background: #8BB8D0; }
+      .tl-entry[data-type="project"]::before{ background: #555; }
+      .tl-entry[data-type="edu"]::before    { background: #7A9E7E; }
+      .tl-card-right { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Yashvi Bhatt</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="contact.html" class="nav-cta">Get In Touch</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="container">
+    <div class="page-header">
+      <p class="eyebrow">About</p>
+      <h1>Data engineer. Analyst. Writer.</h1>
+    </div>
+  </div>
+
+  <!-- ABOUT BODY -->
+  <div class="container">
+    <div class="about-bio">
+
+      <!-- LEFT: Bio -->
+      <div class="about-body text-full">
+        <p>I work at the intersection of data systems and clear communication. That sounds like a brand statement. It&rsquo;s actually just what happened.</p>
+
+        <p>I have a background in computer engineering and I&rsquo;m finishing a master&rsquo;s in Information Management with a concentration in finance and analytics at the University of Illinois. I&rsquo;ve built pipelines, automated test suites, e-commerce platforms, and BI dashboards across industries that don&rsquo;t obviously connect: fintech, optics retail, QA, and newsrooms.</p>
+
+        <p>I also write. Not as a side hobby. I spent three years as a Senior Editor at Mid Day, one of Mumbai&rsquo;s major daily newspapers. I&rsquo;ve published cultural essays, science communication for local government, and interview profiles for a UN-affiliated organization. The writing and the technical work don&rsquo;t compete. They come from the same habit: look at how something works, find what&rsquo;s not working, and fix it in the clearest way available.</p>
+
+        <hr class="divider" />
+
+        <h3 style="margin-bottom:24px;">What I care about</h3>
+        <ul class="values-list">
+          <li><span>I don&rsquo;t ship things I wouldn&rsquo;t use myself.</span></li>
+          <li><span>Clarity beats cleverness, every time.</span></li>
+          <li><span>The best solution is usually the simpler one.</span></li>
+        </ul>
+
+        <hr class="divider" />
+
+        <h3 style="margin-bottom:24px;">What people hire me for</h3>
+        <ul class="values-list">
+          <li><span>Building data pipelines and dashboards that actually get used, not just built.</span></li>
+          <li><span>Translating technical work into something non-technical stakeholders can act on.</span></li>
+          <li><span>Finding the gap between what the data says and what needs to change.</span></li>
+        </ul>
+
+        <hr class="divider" />
+
+        <div>
+          <span class="currently-tag">Currently</span>
+          <p style="margin-top:12px; max-width:100%;">I&rsquo;m in Champaign, IL, finishing the last courses of my MS and preparing for what&rsquo;s next. Previously worked on a Digital Accessibility project at UIUC&rsquo;s Digital Risk Office. Open to full-time roles starting mid-2026 in data engineering, analytics engineering, or adjacent roles where both technical and communication skills are useful.</p>
+          <p style="max-width:100%;">I work well in small teams. I don&rsquo;t need everything to be defined before I start.</p>
+        </div>
+
+        <div class="btn-group" style="margin-top: 40px;">
+          <a href="assets/documents/resume.pdf" target="_blank" class="btn btn-primary">Download Resume</a>
+          <a href="contact.html" class="btn btn-ghost">Get In Touch &rarr;</a>
+        </div>
+        <p style="margin-top:24px; font-size:0.8rem; color:var(--text-muted);">Want the full timeline? <a href="index.html#timeline" style="color:var(--accent);">See every role, project, and milestone on the home page &rarr;</a></p>
+      </div>
+
+      <!-- RIGHT: Sidebar -->
+      <div class="about-sidebar">
+
+        <div class="sidebar-block">
+          <div class="sidebar-block-header">Education</div>
+          <div class="sidebar-block-body">
+            <div class="edu-item">
+              <h4>University of Illinois Urbana-Champaign</h4>
+              <p>MS Information Management (Finance &amp; Analytics)</p>
+              <p style="margin-top:4px; color: var(--text-muted); font-size:0.78rem;">2024 &ndash; 2026</p>
+            </div>
+            <div class="edu-item">
+              <h4>Mukesh Patel School of Technology Management</h4>
+              <p>B.Tech Computer Engineering &middot; GPA 3.59</p>
+              <p style="margin-top:4px; color: var(--text-muted); font-size:0.78rem;">2019 &ndash; 2023 &middot; Mumbai</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-block-header">Certifications</div>
+          <div class="sidebar-block-body">
+            <ul class="cert-list">
+              <li>CFA Level I &middot; Level II Candidate, May 2026</li>
+              <li>AWS Certified Cloud Practitioner</li>
+              <li>NISM Mutual Fund &amp; Alternative Investments</li>
+              <li>Financial Markets (Coursera)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-block-header">Technical Skills</div>
+          <div class="sidebar-block-body">
+            <div style="margin-bottom:14px;">
+              <p style="font-size:0.72rem; font-weight:600; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; max-width:100%;">Data &amp; Engineering</p>
+              <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Apache NiFi</span>
+                <span class="skill-tag">ETL</span>
+                <span class="skill-tag">Hadoop</span>
+                <span class="skill-tag">Airflow</span>
+                <span class="skill-tag">AWS</span>
+                <span class="skill-tag">Docker</span>
+              </div>
+            </div>
+            <div style="margin-bottom:14px;">
+              <p style="font-size:0.72rem; font-weight:600; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; max-width:100%;">Databases</p>
+              <div class="skill-tags">
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">PostgreSQL</span>
+                <span class="skill-tag">OracleSQL</span>
+                <span class="skill-tag">MongoDB</span>
+                <span class="skill-tag">SQLite</span>
+              </div>
+            </div>
+            <div style="margin-bottom:14px;">
+              <p style="font-size:0.72rem; font-weight:600; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; max-width:100%;">Analytics &amp; BI</p>
+              <div class="skill-tags">
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Looker</span>
+                <span class="skill-tag">Excel</span>
+                <span class="skill-tag">R</span>
+              </div>
+            </div>
+            <div>
+              <p style="font-size:0.72rem; font-weight:600; color:var(--accent); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; max-width:100%;">Web &amp; Automation</p>
+              <div class="skill-tags">
+                <span class="skill-tag">HTML/CSS/JS</span>
+                <span class="skill-tag">Selenium</span>
+                <span class="skill-tag">TestNG</span>
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">JIRA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-block">
+          <div class="sidebar-block-header">Links</div>
+          <div class="sidebar-block-body">
+            <ul class="cert-list">
+              <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+              <li><a href="mailto:ybhatt2@illinois.edu">ybhatt2@illinois.edu</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /.about-sidebar -->
+    </div><!-- /.about-bio -->
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-name">Yashvi Bhatt</div>
+        <p class="footer-tagline">Built carefully. Updated regularly. No Lorem Ipsum was harmed.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="work.html">Projects</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="writing.html">Writing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://linkedin.com/in/yashvi-bhatt" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/yashvibhatt" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="assets/documents/resume.pdf" target="_blank">Resume</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+  (function () {
+    // Timeline moved to index.html — nothing to render here
+    var wrap = document.getElementById('tl-wrap');
+    if (!wrap) return;
+    var entries = [
+      // ── 2025 ──
+      { year: 2025, type: 'project', title: 'Market Returns Around VIX Peaks', org: 'Python · Event Study · Finance', dates: '2025', bullets: ['~40 VIX peaks analyzed (2016–present)', 'S&P 500: −0.24%/day pre-peak → +0.19%/day post-peak', 'Energy and Financials led post-peak sector recovery'] },
+      { year: 2025, type: 'project', title: 'Corporate Credit Rating Prediction', org: 'Python · scikit-learn · Machine Learning', dates: '2025', bullets: ['78.6% binary classification accuracy (Investment vs. Speculative)', 'Cross-validated on 1,700 corporate observations with RepeatedStratifiedKFold', '4 algorithms benchmarked: Random Forest, AdaBoost, Logistic Regression, Voting Ensemble'] },
+      { year: 2025, type: 'project', title: 'Asian Option Pricing with Neural Networks', org: 'PyTorch · Quantitative Finance', dates: '2025', bullets: ['5 neural architectures compared: LSTM, Transformer, MLP, RNN, CNN', 'Monte Carlo simulation baseline for benchmarking', 'Deep learning applied to path-dependent derivative pricing'] },
+
+      // ── 2024 ──
+      { year: 2024, type: 'edu', title: 'Started MS Information Management', org: 'University of Illinois Urbana-Champaign · Finance & Analytics', dates: 'Aug 2024', bullets: ['Concentration in finance and analytics', 'Graduate coursework in financial modeling, data systems, and statistics'] },
+      { year: 2024, type: 'project', title: 'Automated Financial Data Pipeline', org: 'Python · MySQL · ETL', dates: '2024', bullets: ['Multi-source ETL: two CSV feeds + simulated FX-rate API', '12-step deterministic cleaning process with 8 DQ checks per run', '35 pytest tests across extract, transform, and validate layers'] },
+      { year: 2024, type: 'project', title: 'Ford Stock Return Prediction', org: 'R · Statistical Modeling · Time-Series', dates: '2024', bullets: ['4 regression models compared: OLS, Stepwise AIC, Mallows\' Cp, CAPM', '263 monthly observations (Jan 2004–Nov 2025)', 'VIF diagnostics and robust HC standard errors applied'] },
+      { year: 2024, type: 'project', title: 'Wildfire Hotspot & Risk Zone Analysis', org: 'R · Geospatial Analysis · Data Analysis', dates: '2024', bullets: ['4 research questions on wildfire spatial distribution and risk', 'Spatial autocorrelation analysis of fire incidents', 'Findings framed for policy-relevant interpretation'] },
+
+      // ── 2023 ──
+      { year: 2023, type: 'edu', title: 'Graduated B.Tech Computer Engineering', org: 'Mukesh Patel School of Technology Management · Mumbai', dates: 'May 2023', bullets: ['GPA 3.59', 'Graduated with honours from a NMIMS university institution'] },
+      { year: 2023, type: 'project', title: 'E-Concessionaire OCR System', org: 'Python · OCR · Database Authentication', dates: '2022–2023', bullets: ['Built under contract for Indian Railways', 'Processing time reduced from 15 days → 2 days (87% improvement)', 'Encrypted document verification with full audit trail'] },
+
+      // ── 2019 ──
+      { year: 2019, type: 'edu', title: 'Started B.Tech Computer Engineering', org: 'Mukesh Patel School of Technology Management · Mumbai', dates: 'Aug 2019', bullets: ['Began undergraduate degree in Computer Engineering', 'Foundation in software development, algorithms, and systems'] },
+    ];
+
+    var wrap = document.getElementById('tl-wrap');
+    if (!wrap) return;
+
+    // Group entries by year (descending)
+    var yearMap = {};
+    entries.forEach(function (e) {
+      if (!yearMap[e.year]) yearMap[e.year] = [];
+      yearMap[e.year].push(e);
+    });
+    var years = Object.keys(yearMap).map(Number).sort(function (a, b) { return b - a; });
+
+    var html = '';
+    years.forEach(function (year) {
+      html += '<div class="tl-year-group" data-year="' + year + '">';
+      html += '<div class="tl-year-left"><span class="tl-year-num">' + year + '</span></div>';
+      html += '<div class="tl-year-right">';
+      yearMap[year].forEach(function (e) {
+        html += '<div class="tl-entry" data-type="' + e.type + '">';
+        html += '<div class="tl-card">';
+        html += '<div class="tl-card-top">';
+        html += '<div>';
+        html += '<p class="tl-card-title">' + e.title + '</p>';
+        html += '<p class="tl-card-org">' + e.org + '</p>';
+        html += '</div>';
+        html += '<div class="tl-card-right">';
+        html += '<span class="tl-card-dates">' + e.dates + '</span>';
+        html += '<span class="tl-badge ' + e.type + '">' + e.type + '</span>';
+        html += '<span class="tl-chevron">▼</span>';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="tl-body"><div class="tl-body-inner"><ul>';
+        e.bullets.forEach(function (b) { html += '<li>' + b + '</li>'; });
+        html += '</ul></div></div>';
+        html += '</div></div>';
+      });
+      html += '</div>';
+      html += '</div>';
+    });
+    wrap.innerHTML = html;
+
+    // Toggle expand/collapse on card click
+    wrap.addEventListener('click', function (e) {
+      var card = e.target.closest('.tl-card');
+      if (!card) return;
+      card.closest('.tl-entry').classList.toggle('tl-open');
+    });
+
+    // Category filter
+    document.querySelectorAll('.tl-filter').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.tl-filter').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.dataset.filter;
+        document.querySelectorAll('.tl-entry').forEach(function (el) {
+          el.classList.toggle('tl-hidden', f !== 'all' && el.dataset.type !== f);
+        });
+        document.querySelectorAll('.tl-year-group').forEach(function (g) {
+          var visible = g.querySelectorAll('.tl-entry:not(.tl-hidden)').length;
+          g.classList.toggle('tl-all-hidden', visible === 0);
+        });
+      });
+    });
+  })();
+  </script>
+</body>
+</html>

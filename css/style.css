@@ -1652,7 +1652,7 @@ footer {
   width: 100%;
   height: 400px;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 100%;
   border-radius: 12px;
   display: block;
   border: 1px solid var(--border);

@@ -1,0 +1,86 @@
+YASHVI BHATT
+Champaign, IL | ybhatt2@illinois.edu | github.com/yashvibhatt | linkedin.com/in/yashvi-bhatt
+
+========================================
+EDUCATION
+========================================
+
+University of Illinois Urbana-Champaign
+MS Information Management, Finance & Analytics
+Aug 2024 - May 2026
+
+Mukesh Patel School of Technology Management & Engineering, NMIMS
+B.Tech Computer Engineering | GPA: 3.59
+Aug 2019 - May 2023
+
+Certifications: CFA Level I (Passed) | CFA Level II Candidate (May 2026) | AWS Certified Cloud Practitioner | NISM Mutual Fund & Alternative Investments
+
+========================================
+EXPERIENCE
+========================================
+
+Graduate Research Assistant
+Health Informatics Center, University of Illinois | Aug 2025 - Present
+- Synthesize interdisciplinary research findings into structured documentation and milestone deliverables for cross-functional stakeholders
+- Translate complex technical outputs into accessible written reports for non-specialist audiences across ongoing research initiatives
+
+Graduate Teaching Assistant - FIN 221 Corporate Finance
+University of Illinois | Aug 2025 - Dec 2025
+- Evaluated quantitative assignments across large undergraduate sections; provided structured written feedback on financial modeling and valuation problems
+- Reinforced core concepts including capital structure, DCF analysis, and risk-return tradeoffs during office hours and review sessions
+
+Senior Editor
+Mid Day, Mumbai | Apr 2021 - Aug 2024
+- Managed high-volume daily editorial workflows across multiple content sections over 3+ years at a major Mumbai daily newspaper
+- Enforced editorial standards, factual accuracy, and style guidelines for all published content; reviewed and approved articles under tight daily news cycle deadlines
+- Published bylined cultural essays, UN-affiliated volunteer profiles, and public health science communication guides
+
+Web Developer and Power BI Intern
+Sapient Wealth Advisors Ltd, Mumbai | May 2022 - Nov 2022
+- Developed 6+ interactive Power BI dashboards integrating real-time financial and behavioral client data for portfolio analysis
+- Optimized SQL queries and database indexing strategies, improving data retrieval performance by 28%
+- Built API-driven data ingestion pipelines, eliminating 35% of manual reporting effort
+
+Quality Assurance Intern
+ARCON, Mumbai | Jan 2021 - May 2021
+- Authored 100+ automated validation scripts using Python and Selenium within a scalable end-to-end testing framework, reducing manual testing effort by 50%
+- Detected and logged data pipeline defects before production deployment, improving reliability across critical validation scenarios
+
+========================================
+PROJECTS
+========================================
+
+Asian Option Pricing with Neural Networks
+Python | PyTorch | Geometric Brownian Motion | Monte Carlo Simulation | 2025
+github.com/yashvibhatt/asian-option-neural-pricing
+- Benchmarked 5 architectures (MLP, CNN, LSTM, CNN-LSTM, TCN) trained on synthetic GBM-simulated data; MLP achieved best performance (MAE 0.0256, RMSE 0.0860) vs. 50,000-path Monte Carlo baseline with near-instant inference
+
+Corporate Credit Rating Prediction
+Python | scikit-learn | Random Forest | AdaBoost | Voting Ensemble | 2025
+github.com/yashvibhatt/ml-finance-models
+- Achieved 78.6% binary classification accuracy (Investment vs. Speculative grade) on 1,700 corporate observations; benchmarked 4 algorithms using RepeatedStratifiedKFold cross-validation to prevent class imbalance leakage
+
+Automated Financial Data Pipeline
+Python | MySQL | pandas | pytest | ETL | 2024
+github.com/yashvibhatt/financial-data-pipeline
+- Built multi-source ETL pipeline with 12-step deterministic cleaning, 8 automated DQ checks per run (null, duplicate, schema, z-score anomaly, date range), and 35 pytest tests; output connects directly to Tableau, Metabase, and Grafana
+
+E-Concessionaire OCR System
+Python | OCR | Encryption | Relational Database | 2022-2023
+- Delivered contract project for Indian Railways; automated physical-form digitization, rule-based validation, and database-linked approvals, reducing end-to-end processing time by 87% (15 days to 2 days)
+
+========================================
+SKILLS
+========================================
+
+Languages: Python, R, SQL, Java, JavaScript, HTML, CSS
+
+ML and Data Science: PyTorch, scikit-learn, pandas, numpy, scipy, Statistical Modeling, Feature Engineering, Cross-validation
+
+Analytics and BI: Power BI, Tableau, Excel, Metabase, Looker
+
+Databases: MySQL, PostgreSQL, MongoDB, OracleSQL
+
+Tools and Infrastructure: Git, Docker, AWS, Apache NiFi, Selenium, Airflow, Jupyter
+
+Quantitative Finance: Financial Modeling, Regression Analysis, Monte Carlo Simulation, Event Study Methodology, CAPM

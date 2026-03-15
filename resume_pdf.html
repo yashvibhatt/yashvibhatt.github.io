@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yashvi Bhatt — Resume</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Calibri', 'Arial', sans-serif;
+      font-size: 8.5pt;
+      line-height: 1.22;
+      color: #111;
+      background: #fff;
+      padding: 0.26in 0.34in;
+      max-width: 8.5in;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header { text-align: center; margin-bottom: 4px; }
+    .header h1 { font-size: 14.5pt; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 2px; }
+    .contact { font-size: 8pt; color: #333; }
+    .contact a { color: #1a5fa8; text-decoration: none; }
+    .sep { margin: 0 3px; color: #bbb; }
+
+    /* Section */
+    .section { margin-top: 5px; }
+    .section-title { font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; border-bottom: 1px solid #111; padding-bottom: 1px; margin-bottom: 3px; }
+
+    /* Entry */
+    .entry { margin-bottom: 3px; }
+    .row { display: flex; justify-content: space-between; align-items: baseline; }
+    .title { font-size: 8.5pt; font-weight: 700; }
+    .date { font-size: 8pt; color: #444; white-space: nowrap; margin-left: 6px; flex-shrink: 0; }
+    .sub { font-size: 8pt; font-style: italic; color: #444; margin-bottom: 1px; }
+
+    /* Bullets */
+    ul { margin: 1px 0 0 11px; }
+    li { font-size: 8.3pt; margin-bottom: 0; }
+
+    /* Education */
+    .edu-entry { margin-bottom: 2px; }
+
+    /* Skills — side-by-side pairs, no grid to prevent wrapping */
+    .skill-row { display: flex; margin-bottom: 1.5px; }
+    .skill-col { width: 50%; font-size: 8.2pt; padding-right: 8px; }
+
+    /* Certs — single inline line */
+    .cert-line { font-size: 8.2pt; }
+
+    @media print {
+      body { padding: 0.24in 0.30in; }
+      a { color: #1a5fa8 !important; }
+      @page { margin: 0; size: letter; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Yashvi Bhatt</h1>
+    <div class="contact">
+      Champaign, IL <span class="sep">|</span>
+      <a href="mailto:ybhatt2@illinois.edu">ybhatt2@illinois.edu</a> <span class="sep">|</span>
+      <a href="https://github.com/yashvibhatt">github.com/yashvibhatt</a> <span class="sep">|</span>
+      <a href="https://linkedin.com/in/yashvi-bhatt">linkedin.com/in/yashvi-bhatt</a>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="edu-entry">
+      <div class="row">
+        <span class="title">University of Illinois Urbana-Champaign</span>
+        <span class="date">Aug 2024 &ndash; May 2026</span>
+      </div>
+      <div class="sub">MS Information Management, Finance &amp; Analytics</div>
+    </div>
+    <div class="edu-entry">
+      <div class="row">
+        <span class="title">Mukesh Patel School of Technology Management &amp; Engineering, NMIMS</span>
+        <span class="date">Aug 2019 &ndash; May 2023</span>
+      </div>
+      <div class="sub">B.Tech Computer Engineering &nbsp;|&nbsp; GPA: 3.59</div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skill-row">
+      <div class="skill-col"><strong>Languages:</strong> Python &middot; R &middot; SQL &middot; Java &middot; JavaScript &middot; HTML/CSS</div>
+      <div class="skill-col"><strong>ML &amp; Data:</strong> PyTorch &middot; scikit-learn &middot; pandas &middot; numpy &middot; scipy &middot; Jupyter</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-col"><strong>Analytics &amp; BI:</strong> Power BI &middot; Tableau &middot; Excel &middot; Metabase &middot; Looker</div>
+      <div class="skill-col"><strong>Databases:</strong> MySQL &middot; PostgreSQL &middot; MongoDB &middot; OracleSQL</div>
+    </div>
+    <div class="skill-row">
+      <div class="skill-col"><strong>Tools:</strong> Git &middot; Docker &middot; AWS &middot; NiFi &middot; Selenium &middot; Airflow</div>
+      <div class="skill-col"><strong>Quant Finance:</strong> Financial Modeling &middot; Monte Carlo &middot; Event Study &middot; CAPM</div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Graduate Research Assistant</span>
+        <span class="date">Aug 2025 &ndash; Present</span>
+      </div>
+      <div class="sub">Health Informatics Center, University of Illinois &mdash; Champaign, IL</div>
+      <ul>
+        <li>Synthesize research findings into structured milestone documentation and deliverables for cross-functional stakeholders</li>
+        <li>Translate complex technical outputs into accessible written reports supporting ongoing research publication and dissemination</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Graduate Teaching Assistant &mdash; FIN 221 Corporate Finance</span>
+        <span class="date">Aug &ndash; Dec 2025</span>
+      </div>
+      <div class="sub">University of Illinois &mdash; Champaign, IL</div>
+      <ul>
+        <li>Evaluated quantitative assignments and delivered written feedback on financial modeling, DCF, and valuation problems</li>
+        <li>Reinforced capital structure, DCF analysis, and risk-return tradeoffs during weekly office hours and review sessions</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Web Developer &amp; Power BI Intern</span>
+        <span class="date">May &ndash; Nov 2022</span>
+      </div>
+      <div class="sub">Sapient Wealth Advisors Ltd &mdash; Mumbai, India</div>
+      <ul>
+        <li>Built 6+ interactive Power BI dashboards integrating real-time financial and behavioral client data for portfolio analysis</li>
+        <li>Optimized SQL queries and database indexing, improving data retrieval by <strong>28%</strong></li>
+        <li>Built API-driven ingestion pipelines eliminating <strong>35% of manual reporting effort</strong> across weekly and monthly cycles</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Web Development Intern</span>
+        <span class="date">Aug &ndash; Sep 2021</span>
+      </div>
+      <div class="sub">SBI Mutual Fund &mdash; Mumbai, India</div>
+      <ul>
+        <li>Developed financial product pages; improved layout hierarchy and information architecture for investment product listings</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Quality Assurance Intern</span>
+        <span class="date">Jan &ndash; May 2021</span>
+      </div>
+      <div class="sub">ARCON &mdash; Mumbai, India</div>
+      <ul>
+        <li>Authored <strong>100+ Python/Selenium validation scripts</strong> in a scalable testing framework, reducing manual effort by <strong>50%</strong></li>
+        <li>Detected data pipeline defects pre-production, improving software reliability across critical validation scenarios</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Web &amp; Database Intern</span>
+        <span class="date">Dec 2019 &ndash; Nov 2020</span>
+      </div>
+      <div class="sub">GALA Optics Limited &mdash; Mumbai, India</div>
+      <ul>
+        <li>Built full-stack e-commerce platform with HTML/CSS frontend, SQL-optimized backend, and API-based payment processing</li>
+        <li>Optimized SQL queries and indexing to achieve <strong>30% faster data retrieval</strong> with no new infrastructure</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Asian Option Pricing with Neural Networks</span>
+        <span class="date">2025</span>
+      </div>
+      <div class="sub">Python &middot; PyTorch &middot; GBM &middot; Monte Carlo &middot; <a href="https://github.com/yashvibhatt/asian-option-neural-pricing" style="color:#1a5fa8;text-decoration:none;">github.com/yashvibhatt/asian-option-neural-pricing</a></div>
+      <ul>
+        <li>Benchmarked 5 architectures (MLP, CNN, LSTM, CNN-LSTM, TCN); MLP achieved MAE 0.0256, RMSE 0.0860 vs. 50,000-path Monte Carlo with near-instant inference</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Corporate Credit Rating Prediction</span>
+        <span class="date">2025</span>
+      </div>
+      <div class="sub">Python &middot; scikit-learn &middot; Random Forest &middot; AdaBoost &middot; Voting Ensemble &middot; <a href="https://github.com/yashvibhatt/ml-finance-models" style="color:#1a5fa8;text-decoration:none;">github.com/yashvibhatt/ml-finance-models</a></div>
+      <ul>
+        <li>Achieved <strong>78.6% binary accuracy</strong> (Investment vs. Speculative) on 1,700 observations; 4 algorithms benchmarked with stratified cross-validation</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Automated Financial Data Pipeline</span>
+        <span class="date">2024</span>
+      </div>
+      <div class="sub">Python &middot; MySQL &middot; pandas &middot; pytest &middot; ETL &middot; <a href="https://github.com/yashvibhatt/financial-data-pipeline" style="color:#1a5fa8;text-decoration:none;">github.com/yashvibhatt/financial-data-pipeline</a></div>
+      <ul>
+        <li>Built ETL pipeline with 12-step cleaning, 8 DQ checks/run, and 35 pytest tests; output connects to Tableau, Metabase, and Grafana</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Market Returns Around VIX Peaks &mdash; Event Study</span>
+        <span class="date">2025</span>
+      </div>
+      <div class="sub">Python &middot; pandas &middot; scipy &middot; yfinance &middot; matplotlib &middot; <a href="https://github.com/yashvibhatt/vix-peaks-event-study" style="color:#1a5fa8;text-decoration:none;">github.com/yashvibhatt/vix-peaks-event-study</a></div>
+      <ul>
+        <li>Analyzed ~40 VIX peaks; S&amp;P 500 shifted &minus;0.24%/day pre-peak to +0.19%/day post; Energy and Financials led GICS sector recovery</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">E-Concessionaire OCR System <span style="font-weight:400;color:#555;">(Contract &mdash; Indian Railways)</span></span>
+        <span class="date">2022 &ndash; 2023</span>
+      </div>
+      <div class="sub">Python &middot; OCR &middot; Encryption &middot; Relational Database &middot; Undergraduate Thesis</div>
+      <ul>
+        <li>Automated form digitization, validation, and approvals; cut processing time by <strong>87%</strong> (15 days &rarr; 2 days) with near-zero data entry error</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="row">
+        <span class="title">Ford Stock Return Prediction</span>
+        <span class="date">2024</span>
+      </div>
+      <div class="sub">R &middot; ggplot2 &middot; OLS &middot; Stepwise AIC &middot; CAPM &middot; <a href="https://github.com/yashvibhatt/ford-project" style="color:#1a5fa8;text-decoration:none;">github.com/yashvibhatt/ford-project</a></div>
+      <ul>
+        <li>Compared 4 models (OLS, Stepwise AIC, Mallows' Cp, CAPM) on 263 monthly observations; applied HC robust errors and VIF diagnostics</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="section">
+    <div class="section-title">Certifications</div>
+    <div class="cert-line">
+      <strong>CFA Level I</strong> &mdash; Passed &nbsp;&middot;&nbsp;
+      <strong>CFA Level II</strong> &mdash; Candidate, May 2026 &nbsp;&middot;&nbsp;
+      <strong>AWS Certified Cloud Practitioner</strong> &nbsp;&middot;&nbsp;
+      NISM Mutual Fund &amp; Alternative Investments
+    </div>
+  </div>
+
+</body>
+</html>
